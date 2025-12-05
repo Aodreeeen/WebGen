@@ -3,21 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tanguy le Dictateur - Empire Numérique</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>Kamasutra Moderne - L'Art de l'Intimité</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary-dark: #1a1a2e;
-            --secondary-dark: #16213e;
-            --accent-gold: #d4af37;
-            --accent-red: #8b0000;
-            --text-light: #f5f5f5;
-            --text-gray: #b0b0b0;
-            --gradient-main: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f1419 100%);
-            --gradient-gold: linear-gradient(135deg, #d4af37 0%, #ffd700 100%);
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -26,9 +15,9 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background: var(--gradient-main);
-            color: var(--text-light);
-            overflow-x: hidden;
+            line-height: 1.6;
+            color: #2c2c2c;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
         }
 
         .container {
@@ -39,12 +28,13 @@
 
         /* Header */
         header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(26, 26, 46, 0.95);
-            backdrop-filter: blur(10px);
             z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
         }
 
@@ -56,13 +46,11 @@
         }
 
         .logo {
-            font-family: 'Cinzel', serif;
+            font-family: 'Playfair Display', serif;
             font-size: 1.8rem;
             font-weight: 700;
-            background: var(--gradient-gold);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #d63384;
+            text-decoration: none;
         }
 
         .nav-links {
@@ -72,14 +60,14 @@
         }
 
         .nav-links a {
-            color: var(--text-light);
             text-decoration: none;
+            color: #2c2c2c;
             font-weight: 500;
             transition: color 0.3s ease;
         }
 
         .nav-links a:hover {
-            color: var(--accent-gold);
+            color: #d63384;
         }
 
         /* Hero Section */
@@ -87,8 +75,7 @@
             height: 100vh;
             display: flex;
             align-items: center;
-            justify-content: center;
-            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             position: relative;
             overflow: hidden;
         }
@@ -100,229 +87,181 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(circle at center, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
-            z-index: -1;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="30" r="3" fill="rgba(255,255,255,0.05)"/><circle cx="40" cy="70" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
         }
 
         .hero-content {
-            max-width: 800px;
-            animation: fadeInUp 1s ease;
-        }
-
-        .hero-portrait {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 2rem;
-            border-radius: 50%;
-            background: var(--gradient-gold);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.3);
-            transition: transform 0.3s ease;
-        }
-
-        .hero-portrait:hover {
-            transform: scale(1.05);
-        }
-
-        .hero-portrait i {
-            font-size: 5rem;
-            color: var(--primary-dark);
+            text-align: center;
+            color: white;
+            z-index: 2;
+            position: relative;
         }
 
         .hero h1 {
-            font-family: 'Cinzel', serif;
-            font-size: 4rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 300;
             margin-bottom: 1rem;
-            background: var(--gradient-gold);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards 0.5s;
         }
 
-        .hero-subtitle {
-            font-size: 1.5rem;
-            color: var(--text-gray);
+        .hero p {
+            font-size: 1.3rem;
             margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards 0.7s;
         }
 
         .cta-button {
             display: inline-block;
-            padding: 15px 40px;
-            background: var(--gradient-gold);
-            color: var(--primary-dark);
+            padding: 1rem 2.5rem;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a6f);
+            color: white;
             text-decoration: none;
-            font-weight: 600;
             border-radius: 50px;
+            font-weight: 600;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards 0.9s;
         }
 
         .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(238, 90, 111, 0.4);
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #2c2c2c;
         }
 
         /* About Section */
         .about {
-            padding: 100px 0;
-            background: rgba(22, 33, 62, 0.3);
+            background: white;
         }
 
-        .section-title {
-            font-family: 'Cinzel', serif;
-            font-size: 3rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            background: var(--gradient-gold);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .about-grid {
+        .about-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-            margin-top: 4rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
         }
 
-        .about-card {
-            background: rgba(26, 26, 46, 0.5);
-            padding: 2.5rem;
-            border-radius: 15px;
-            text-align: center;
-            transition: transform 0.3s ease;
-            border: 1px solid rgba(212, 175, 55, 0.2);
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
         }
 
-        .about-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .card-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 1.5rem;
-            background: var(--gradient-gold);
-            border-radius: 50%;
+        .about-visual {
+            height: 400px;
+            background: linear-gradient(45deg, #ff9a9e, #fecfef, #fecfef);
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
+            overflow: hidden;
         }
 
-        .card-icon i {
-            font-size: 2rem;
-            color: var(--primary-dark);
+        .about-visual::before {
+            content: '\f004';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            font-size: 4rem;
+            color: rgba(255, 255, 255, 0.3);
+            position: absolute;
         }
 
-        .card-title {
-            font-family: 'Cinzel', serif;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--accent-gold);
+        /* Benefits Section */
+        .benefits {
+            background: #f8f9fa;
         }
 
-        /* Empire Section */
-        .empire {
-            padding: 100px 0;
-        }
-
-        .empire-stats {
+        .benefits-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
         }
 
-        .stat-card {
+        .benefit-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
             text-align: center;
-            padding: 2rem;
-            background: rgba(139, 0, 0, 0.1);
-            border-radius: 10px;
-            border: 1px solid var(--accent-red);
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
         }
 
-        .stat-card:hover {
-            background: rgba(139, 0, 0, 0.2);
-            transform: scale(1.05);
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
         }
 
-        .stat-number {
-            font-family: 'Cinzel', serif;
-            font-size: 3rem;
-            color: var(--accent-gold);
-            display: block;
-        }
-
-        .stat-label {
-            color: var(--text-gray);
-            margin-top: 0.5rem;
-        }
-
-        /* Contact Section */
-        .contact {
-            padding: 100px 0;
-            background: rgba(22, 33, 62, 0.3);
-        }
-
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-            display: grid;
-            gap: 1.5rem;
-        }
-
-        .form-group {
+        .benefit-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            border-radius: 50%;
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
         }
 
-        .form-group label {
-            margin-bottom: 0.5rem;
-            color: var(--accent-gold);
-            font-weight: 500;
+        .benefit-icon.intimacy {
+            background: linear-gradient(135deg, #667eea, #764ba2);
         }
 
-        .form-group input,
-        .form-group textarea {
-            padding: 15px;
-            background: rgba(26, 26, 46, 0.8);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            border-radius: 8px;
-            color: var(--text-light);
-            font-family: inherit;
+        .benefit-icon.communication {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
         }
 
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--accent-gold);
+        .benefit-icon.wellness {
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
         }
 
-        .submit-btn {
-            padding: 15px;
-            background: var(--gradient-gold);
-            color: var(--primary-dark);
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.3s ease;
+        .benefit-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #2c2c2c;
         }
 
-        .submit-btn:hover {
-            transform: translateY(-2px);
+        /* Philosophy Section */
+        .philosophy {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .philosophy-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .philosophy-content p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
         }
 
         /* Footer */
         footer {
-            background: var(--primary-dark);
-            padding: 50px 0 20px;
+            background: #2c2c2c;
+            color: white;
             text-align: center;
-            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 3rem 0;
         }
 
         .footer-content {
@@ -333,33 +272,31 @@
         }
 
         .footer-section h3 {
-            color: var(--accent-gold);
+            font-family: 'Playfair Display', serif;
             margin-bottom: 1rem;
-            font-family: 'Cinzel', serif;
         }
 
         .social-links {
             display: flex;
             justify-content: center;
             gap: 1rem;
-            margin-top: 1rem;
         }
 
         .social-links a {
-            color: var(--text-gray);
+            color: white;
             font-size: 1.5rem;
             transition: color 0.3s ease;
         }
 
         .social-links a:hover {
-            color: var(--accent-gold);
+            color: #d63384;
         }
 
         /* Animations */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(50px);
+                transform: translateY(30px);
             }
             to {
                 opacity: 1;
@@ -367,11 +304,7 @@
             }
         }
 
-        .fade-in {
-            animation: fadeInUp 0.8s ease;
-        }
-
-        /* Responsive */
+        /* Responsive Design */
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -381,16 +314,35 @@
                 font-size: 2.5rem;
             }
 
-            .hero-subtitle {
-                font-size: 1.2rem;
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
             }
 
             .section-title {
                 font-size: 2rem;
             }
 
-            .about-grid {
+            .benefits-grid {
                 grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .hero {
+                padding: 0 20px;
+            }
+
+            .benefit-card {
+                padding: 2rem;
             }
         }
     </style>
@@ -398,140 +350,98 @@
 <body>
     <header>
         <nav class="container">
-            <div class="logo">TANGUY</div>
+            <a href="#" class="logo">Kamasutra Moderne</a>
             <ul class="nav-links">
-                <li><a href="#accueil">Accueil</a></li>
-                <li><a href="#about">À Propos</a></li>
-                <li><a href="#empire">Empire</a></li>
+                <li><a href="#about">À propos</a></li>
+                <li><a href="#benefits">Bienfaits</a></li>
+                <li><a href="#philosophy">Philosophie</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <main>
-        <section id="accueil" class="hero">
+    <section class="hero">
+        <div class="container">
             <div class="hero-content">
-                <div class="hero-portrait">
-                    <i class="fas fa-crown"></i>
-                </div>
-                <h1>TANGUY</h1>
-                <p class="hero-subtitle">Dictateur Suprême de l'Empire Numérique</p>
-                <a href="#about" class="cta-button">Découvrir l'Empire</a>
+                <h1>L'Art de l'Intimité</h1>
+                <p>Redécouvrez la beauté et la profondeur des relations intimes à travers une approche moderne du Kamasutra</p>
+                <a href="#about" class="cta-button">Découvrir</a>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="about" class="about">
-            <div class="container">
-                <h2 class="section-title">L'Ascension du Dictateur</h2>
-                <p style="text-align: center; max-width: 800px; margin: 0 auto; font-size: 1.2rem; color: var(--text-gray); line-height: 1.6;">Tanguy, maître incontesté du royaume numérique, règne d'une main de fer sur son empire technologique. Sa vision révolutionnaire et son leadership implacable ont façonné un nouveau monde digital.</p>
-                
-                <div class="about-grid">
-                    <div class="about-card fade-in">
-                        <div class="card-icon">
-                            <i class="fas fa-chess-king"></i>
-                        </div>
-                        <h3 class="card-title">Leadership Absolu</h3>
-                        <p>Une autorité incontestée qui guide l'empire vers de nouveaux sommets technologiques et stratégiques.</p>
-                    </div>
-                    
-                    <div class="about-card fade-in">
-                        <div class="card-icon">
-                            <i class="fas fa-brain"></i>
-                        </div>
-                        <h3 class="card-title">Génie Visionnaire</h3>
-                        <p>Des stratégies révolutionnaires qui redéfinissent les règles du jeu dans l'écosystème numérique mondial.</p>
-                    </div>
-                    
-                    <div class="about-card fade-in">
-                        <div class="card-icon">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                        <h3 class="card-title">Protection Totale</h3>
-                        <p>Un système de sécurité impénétrable qui protège l'empire contre toutes les menaces extérieures.</p>
-                    </div>
+    <section id="about" class="section about">
+        <div class="container">
+            <h2 class="section-title">Une Sagesse Millénaire</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Le Kamasutra, bien plus qu'un simple manuel, représente une philosophie de vie qui célèbre l'amour, l'intimité et la connexion humaine. Cette sagesse ancienne nous enseigne l'art de vivre pleinement nos relations.</p>
+                    <p>Notre approche moderne respecte les enseignements traditionnels tout en les adaptant aux réalités contemporaines, offrant un chemin vers une intimité plus profonde et épanouissante.</p>
+                    <p>Découvrez comment cette sagesse millénaire peut enrichir votre vie relationnelle et personnelle dans le monde d'aujourd'hui.</p>
                 </div>
+                <div class="about-visual"></div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="empire" class="empire">
-            <div class="container">
-                <h2 class="section-title">L'Empire en Chiffres</h2>
-                <div class="empire-stats">
-                    <div class="stat-card">
-                        <span class="stat-number">∞</span>
-                        <div class="stat-label">Pouvoir Absolu</div>
+    <section id="benefits" class="section benefits">
+        <div class="container">
+            <h2 class="section-title">Les Bienfaits de cette Pratique</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon intimacy">
+                        <i class="fas fa-heart"></i>
                     </div>
-                    <div class="stat-card">
-                        <span class="stat-number">100M+</span>
-                        <div class="stat-label">Sujets Numériques</div>
+                    <h3>Intimité Profonde</h3>
+                    <p>Développez une connexion plus authentique et profonde avec votre partenaire à travers une compréhension mutuelle renforcée.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon communication">
+                        <i class="fas fa-comments"></i>
                     </div>
-                    <div class="stat-card">
-                        <span class="stat-number">24/7</span>
-                        <div class="stat-label">Surveillance Active</div>
+                    <h3>Communication Épanouie</h3>
+                    <p>Apprenez à exprimer vos désirs et besoins de manière respectueuse, créant un dialogue ouvert et bienveillant.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon wellness">
+                        <i class="fas fa-spa"></i>
                     </div>
-                    <div class="stat-card">
-                        <span class="stat-number">999+</span>
-                        <div class="stat-label">Décrets Impériaux</div>
-                    </div>
+                    <h3>Bien-être Global</h3>
+                    <p>Cultivez un équilibre entre corps, esprit et émotions pour une vie relationnelle et personnelle épanouie.</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="contact" class="contact">
-            <div class="container">
-                <h2 class="section-title">Audience Impériale</h2>
-                <p style="text-align: center; margin-bottom: 3rem; color: var(--text-gray);">Sollicitez une audience auprès de Sa Majesté Tanguy</p>
-                
-                <form class="contact-form">
-                    <div class="form-group">
-                        <label for="nom">Nom du Sujet</label>
-                        <input type="text" id="nom" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">Adresse Électronique</label>
-                        <input type="email" id="email" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message">Requête Impériale</label>
-                        <textarea id="message" rows="6" required></textarea>
-                    </div>
-                    
-                    <button type="submit" class="submit-btn">
-                        <i class="fas fa-paper-plane"></i> Soumettre la Requête
-                    </button>
-                </form>
+    <section id="philosophy" class="section philosophy">
+        <div class="container">
+            <div class="philosophy-content">
+                <h2 class="section-title" style="color: white;">Notre Philosophie</h2>
+                <p>Nous croyons que l'intimité véritable naît de la compréhension, du respect mutuel et de l'acceptation de soi et de l'autre.</p>
+                <p>Le Kamasutra moderne n'est pas seulement une exploration physique, mais un voyage vers une connexion spirituelle et émotionnelle profonde.</p>
+                <p>Cette approche holistique de l'amour et de l'intimité nous invite à célébrer la beauté des relations humaines dans toute leur complexité.</p>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
-    <footer>
+    <footer id="contact">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>Empire Digital</h3>
-                    <p>Sous le règne éclairé de Tanguy le Dictateur</p>
+                    <h3>Contact</h3>
+                    <p>Pour plus d'informations sur nos approches et enseignements</p>
+                    <p><i class="fas fa-envelope"></i> contact@kamasutra-moderne.fr</p>
                 </div>
-                
                 <div class="footer-section">
-                    <h3>Liens Officiels</h3>
+                    <h3>Suivez-nous</h3>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
                         <a href="#"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
-                
-                <div class="footer-section">
-                    <h3>Déclaration</h3>
-                    <p>"L'avenir appartient à ceux qui osent régner sur le digital"</p>
-                </div>
             </div>
-            
-            <hr style="border: 1px solid rgba(212, 175, 55, 0.2); margin: 2rem 0;">
-            <p>&copy; 2024 Empire Tanguy. Tous droits réservés sous Sa Majesté.</p>
+            <p>&copy; 2024 Kamasutra Moderne. Tous droits réservés.</p>
         </div>
     </footer>
 
@@ -550,13 +460,13 @@
             });
         });
 
-        // Header background on scroll
+        // Header scroll effect
         window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
             if (window.scrollY > 100) {
-                header.style.background = 'rgba(26, 26, 46, 0.98)';
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
             } else {
-                header.style.background = 'rgba(26, 26, 46, 0.95)';
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
             }
         });
 
@@ -575,71 +485,13 @@
             });
         }, observerOptions);
 
-        // Observe cards for animation
-        document.querySelectorAll('.about-card, .stat-card').forEach(card => {
+        // Observe benefit cards
+        document.querySelectorAll('.benefit-card').forEach(card => {
             card.style.opacity = '0';
             card.style.transform = 'translateY(30px)';
-            card.style.transition = 'all 0.8s ease';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             observer.observe(card);
         });
-
-        // Form submission
-        document.querySelector('.contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Simulate form submission
-            const submitBtn = document.querySelector('.submit-btn');
-            const originalText = submitBtn.innerHTML;
-            
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
-            submitBtn.disabled = true;
-            
-            setTimeout(() => {
-                submitBtn.innerHTML = '<i class="fas fa-check"></i> Requête Reçue!';
-                setTimeout(() => {
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.disabled = false;
-                    this.reset();
-                }, 2000);
-            }, 2000);
-        });
-
-        // Add floating particles effect
-        function createParticle() {
-            const particle = document.createElement('div');
-            particle.style.position = 'fixed';
-            particle.style.width = '2px';
-            particle.style.height = '2px';
-            particle.style.background = 'var(--accent-gold)';
-            particle.style.borderRadius = '50%';
-            particle.style.pointerEvents = 'none';
-            particle.style.opacity = '0.6';
-            particle.style.zIndex = '-1';
-            particle.style.left = Math.random() * 100 + 'vw';
-            particle.style.top = '100vh';
-            particle.style.animation = 'floatUp 8s linear forwards';
-            
-            document.body.appendChild(particle);
-            
-            setTimeout(() => {
-                particle.remove();
-            }, 8000);
-        }
-
-        // Add CSS animation for particles
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes floatUp {
-                to {
-                    transform: translateY(-100vh) rotate(360deg);
-                    opacity: 0;
-                }
-            }
-        `;
-        document.head.appendChild(style);
-
-        // Create particles periodically
-        setInterval(createParticle, 3000);
     </script>
 </body>
 </html>
