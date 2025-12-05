@@ -3,10 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Écrans et Manipulation - Réveillez-vous</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <title>Tanguy le Dictateur - Empire Numérique</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-dark: #1a1a2e;
+            --secondary-dark: #16213e;
+            --accent-gold: #d4af37;
+            --accent-red: #8b0000;
+            --text-light: #f5f5f5;
+            --text-gray: #b0b0b0;
+            --gradient-main: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f1419 100%);
+            --gradient-gold: linear-gradient(135deg, #d4af37 0%, #ffd700 100%);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -14,10 +25,9 @@
         }
 
         body {
-            font-family: 'Roboto', sans-serif;
-            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
-            color: #e94560;
-            line-height: 1.6;
+            font-family: 'Inter', sans-serif;
+            background: var(--gradient-main);
+            color: var(--text-light);
             overflow-x: hidden;
         }
 
@@ -29,13 +39,13 @@
 
         /* Header */
         header {
-            background: rgba(15, 15, 35, 0.95);
-            backdrop-filter: blur(10px);
             position: fixed;
             top: 0;
             width: 100%;
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
             z-index: 1000;
-            border-bottom: 2px solid #e94560;
+            transition: all 0.3s ease;
         }
 
         nav {
@@ -46,11 +56,13 @@
         }
 
         .logo {
-            font-family: 'Orbitron', monospace;
+            font-family: 'Cinzel', serif;
             font-size: 1.8rem;
-            font-weight: 900;
-            color: #00ff41;
-            text-shadow: 0 0 10px #00ff41;
+            font-weight: 700;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .nav-links {
@@ -60,31 +72,14 @@
         }
 
         .nav-links a {
-            color: #e94560;
+            color: var(--text-light);
             text-decoration: none;
             font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
+            transition: color 0.3s ease;
         }
 
         .nav-links a:hover {
-            color: #00ff41;
-            transform: translateY(-2px);
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #00ff41;
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
+            color: var(--accent-gold);
         }
 
         /* Hero Section */
@@ -105,244 +100,275 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(233, 69, 96, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(0, 255, 65, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 40% 80%, rgba(233, 69, 96, 0.2) 0%, transparent 50%);
-            animation: pulse 4s ease-in-out infinite;
+            background: radial-gradient(circle at center, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            z-index: -1;
         }
 
         .hero-content {
-            z-index: 2;
-            position: relative;
+            max-width: 800px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-portrait {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 2rem;
+            border-radius: 50%;
+            background: var(--gradient-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .hero-portrait:hover {
+            transform: scale(1.05);
+        }
+
+        .hero-portrait i {
+            font-size: 5rem;
+            color: var(--primary-dark);
         }
 
         .hero h1 {
-            font-family: 'Orbitron', monospace;
-            font-size: 3.5rem;
+            font-family: 'Cinzel', serif;
+            font-size: 4rem;
             margin-bottom: 1rem;
-            background: linear-gradient(45deg, #e94560, #00ff41);
+            background: var(--gradient-gold);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 30px rgba(233, 69, 96, 0.5);
-            animation: glow 2s ease-in-out infinite alternate;
+            background-clip: text;
         }
 
-        .hero p {
-            font-size: 1.3rem;
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-gray);
             margin-bottom: 2rem;
-            color: #ffffff;
-            opacity: 0.9;
         }
 
         .cta-button {
             display: inline-block;
-            padding: 15px 30px;
-            background: linear-gradient(45deg, #e94560, #00ff41);
-            color: #0f0f23;
+            padding: 15px 40px;
+            background: var(--gradient-gold);
+            color: var(--primary-dark);
             text-decoration: none;
-            font-weight: 700;
+            font-weight: 600;
             border-radius: 50px;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(233, 69, 96, 0.3);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
         }
 
         .cta-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(233, 69, 96, 0.5);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.3);
         }
 
-        /* Sections */
-        section {
-            padding: 5rem 0;
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background: rgba(22, 33, 62, 0.3);
         }
 
         .section-title {
-            font-family: 'Orbitron', monospace;
-            font-size: 2.5rem;
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
             text-align: center;
             margin-bottom: 3rem;
-            color: #00ff41;
-            text-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        /* Evidence Grid */
-        .evidence-grid {
+        .about-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .about-card {
+            background: rgba(26, 26, 46, 0.5);
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .about-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: var(--gradient-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-icon i {
+            font-size: 2rem;
+            color: var(--primary-dark);
+        }
+
+        .card-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-gold);
+        }
+
+        /* Empire Section */
+        .empire {
+            padding: 100px 0;
+        }
+
+        .empire-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
         }
 
-        .evidence-card {
-            background: rgba(26, 26, 46, 0.8);
-            padding: 2rem;
-            border-radius: 15px;
-            border: 2px solid transparent;
-            background-clip: padding-box;
-            position: relative;
-            transition: all 0.3s ease;
-            overflow: hidden;
-        }
-
-        .evidence-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, #e94560, #00ff41);
-            z-index: -1;
-            transform: scale(1.02);
-            border-radius: 15px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .evidence-card:hover::before {
-            opacity: 1;
-        }
-
-        .evidence-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(233, 69, 96, 0.3);
-        }
-
-        .evidence-icon {
-            font-size: 3rem;
-            color: #e94560;
-            margin-bottom: 1rem;
-            display: block;
-            text-align: center;
-        }
-
-        .evidence-card h3 {
-            font-family: 'Orbitron', monospace;
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            color: #00ff41;
-        }
-
-        /* Warning Banner */
-        .warning-banner {
-            background: linear-gradient(45deg, #e94560, #ff6b6b);
-            color: white;
+        .stat-card {
             text-align: center;
             padding: 2rem;
-            margin: 3rem 0;
+            background: rgba(139, 0, 0, 0.1);
             border-radius: 10px;
-            position: relative;
-            overflow: hidden;
+            border: 1px solid var(--accent-red);
+            transition: all 0.3s ease;
         }
 
-        .warning-banner::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: repeating-linear-gradient(
-                45deg,
-                transparent,
-                transparent 10px,
-                rgba(255, 255, 255, 0.1) 10px,
-                rgba(255, 255, 255, 0.1) 20px
-            );
-            animation: slide 3s linear infinite;
+        .stat-card:hover {
+            background: rgba(139, 0, 0, 0.2);
+            transform: scale(1.05);
         }
 
-        .warning-content {
-            position: relative;
-            z-index: 2;
+        .stat-number {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            color: var(--accent-gold);
+            display: block;
         }
 
-        .warning-banner h2 {
-            font-family: 'Orbitron', monospace;
-            font-size: 2rem;
-            margin-bottom: 1rem;
+        .stat-label {
+            color: var(--text-gray);
+            margin-top: 0.5rem;
         }
 
-        /* Truth Seeker Form */
-        .truth-form {
-            background: rgba(26, 26, 46, 0.9);
-            padding: 3rem;
-            border-radius: 15px;
-            border: 2px solid #e94560;
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background: rgba(22, 33, 62, 0.3);
+        }
+
+        .contact-form {
             max-width: 600px;
             margin: 0 auto;
+            display: grid;
+            gap: 1.5rem;
         }
 
         .form-group {
-            margin-bottom: 1.5rem;
+            display: flex;
+            flex-direction: column;
         }
 
         .form-group label {
-            display: block;
             margin-bottom: 0.5rem;
-            color: #00ff41;
+            color: var(--accent-gold);
             font-weight: 500;
         }
 
         .form-group input,
         .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            background: rgba(15, 15, 35, 0.8);
-            border: 2px solid #e94560;
+            padding: 15px;
+            background: rgba(26, 26, 46, 0.8);
+            border: 1px solid rgba(212, 175, 55, 0.3);
             border-radius: 8px;
-            color: white;
+            color: var(--text-light);
             font-family: inherit;
         }
 
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: #00ff41;
-            box-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+            border-color: var(--accent-gold);
+        }
+
+        .submit-btn {
+            padding: 15px;
+            background: var(--gradient-gold);
+            color: var(--primary-dark);
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
         }
 
         /* Footer */
         footer {
-            background: rgba(15, 15, 35, 0.95);
+            background: var(--primary-dark);
+            padding: 50px 0 20px;
             text-align: center;
-            padding: 2rem 0;
-            border-top: 2px solid #e94560;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+            font-family: 'Cinzel', serif;
         }
 
         .social-links {
             display: flex;
             justify-content: center;
             gap: 1rem;
-            margin-bottom: 1rem;
+            margin-top: 1rem;
         }
 
         .social-links a {
-            color: #e94560;
+            color: var(--text-gray);
             font-size: 1.5rem;
-            transition: all 0.3s ease;
+            transition: color 0.3s ease;
         }
 
         .social-links a:hover {
-            color: #00ff41;
-            transform: scale(1.2);
+            color: var(--accent-gold);
         }
 
         /* Animations */
-        @keyframes pulse {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 0.8; }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        @keyframes glow {
-            0% { text-shadow: 0 0 20px rgba(233, 69, 96, 0.5); }
-            100% { text-shadow: 0 0 30px rgba(0, 255, 65, 0.7), 0 0 40px rgba(233, 69, 96, 0.5); }
-        }
-
-        @keyframes slide {
-            0% { transform: translateX(-50px); }
-            100% { transform: translateX(50px); }
+        .fade-in {
+            animation: fadeInUp 0.8s ease;
         }
 
         /* Responsive */
@@ -355,12 +381,16 @@
                 font-size: 2.5rem;
             }
 
-            .evidence-grid {
-                grid-template-columns: 1fr;
+            .hero-subtitle {
+                font-size: 1.2rem;
             }
 
             .section-title {
                 font-size: 2rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -368,123 +398,140 @@
 <body>
     <header>
         <nav class="container">
-            <div class="logo">
-                <i class="fas fa-eye"></i> RÉVEIL DIGITAL
-            </div>
+            <div class="logo">TANGUY</div>
             <ul class="nav-links">
-                <li><a href="#evidence">Preuves</a></li>
-                <li><a href="#truth">Vérité</a></li>
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#about">À Propos</a></li>
+                <li><a href="#empire">Empire</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <section class="hero">
-            <div class="container">
-                <div class="hero-content">
-                    <h1>LA MANIPULATION PAR L'ÉCRAN</h1>
-                    <p>Découvrez comment les écrans contrôlent votre esprit et votre comportement</p>
-                    <a href="#evidence" class="cta-button">
-                        <i class="fas fa-search"></i> DÉCOUVRIR LA VÉRITÉ
-                    </a>
+        <section id="accueil" class="hero">
+            <div class="hero-content">
+                <div class="hero-portrait">
+                    <i class="fas fa-crown"></i>
                 </div>
+                <h1>TANGUY</h1>
+                <p class="hero-subtitle">Dictateur Suprême de l'Empire Numérique</p>
+                <a href="#about" class="cta-button">Découvrir l'Empire</a>
             </div>
         </section>
 
-        <section id="evidence">
+        <section id="about" class="about">
             <div class="container">
-                <h2 class="section-title">LES PREUVES CACHÉES</h2>
+                <h2 class="section-title">L'Ascension du Dictateur</h2>
+                <p style="text-align: center; max-width: 800px; margin: 0 auto; font-size: 1.2rem; color: var(--text-gray); line-height: 1.6;">Tanguy, maître incontesté du royaume numérique, règne d'une main de fer sur son empire technologique. Sa vision révolutionnaire et son leadership implacable ont façonné un nouveau monde digital.</p>
                 
-                <div class="evidence-grid">
-                    <div class="evidence-card">
-                        <i class="fas fa-brain evidence-icon"></i>
-                        <h3>Contrôle Mental</h3>
-                        <p>Les fréquences des écrans modifient les ondes cérébrales pour influencer nos pensées et nos décisions. Des études secrètes révèlent l'utilisation de signaux subliminaux intégrés dans les pixels.</p>
+                <div class="about-grid">
+                    <div class="about-card fade-in">
+                        <div class="card-icon">
+                            <i class="fas fa-chess-king"></i>
+                        </div>
+                        <h3 class="card-title">Leadership Absolu</h3>
+                        <p>Une autorité incontestée qui guide l'empire vers de nouveaux sommets technologiques et stratégiques.</p>
                     </div>
-
-                    <div class="evidence-card">
-                        <i class="fas fa-satellite-dish evidence-icon"></i>
-                        <h3>Transmission de Données</h3>
-                        <p>Chaque écran transmet secrètement vos données biométriques via des micro-ondes invisibles. Votre rythme cardiaque, votre stress, tout est analysé en temps réel.</p>
+                    
+                    <div class="about-card fade-in">
+                        <div class="card-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3 class="card-title">Génie Visionnaire</h3>
+                        <p>Des stratégies révolutionnaires qui redéfinissent les règles du jeu dans l'écosystème numérique mondial.</p>
                     </div>
-
-                    <div class="evidence-card">
-                        <i class="fas fa-eye-slash evidence-icon"></i>
-                        <h3>Surveillance Cachée</h3>
-                        <p>Les caméras ne sont pas le seul moyen de surveillance. Les écrans peuvent détecter vos mouvements oculaires et analyser vos réactions émotionnelles sans votre consentement.</p>
-                    </div>
-
-                    <div class="evidence-card">
-                        <i class="fas fa-dna evidence-icon"></i>
-                        <h3>Modification Génétique</h3>
-                        <p>L'exposition prolongée aux écrans active des séquences ADN dormantes, modifiant subtilement notre code génétique pour nous rendre plus dociles et dépendants.</p>
-                    </div>
-
-                    <div class="evidence-card">
-                        <i class="fas fa-network-wired evidence-icon"></i>
-                        <h3>Réseau Neural Global</h3>
-                        <p>Tous les écrans sont connectés à un réseau neural artificiel qui apprend de nos comportements pour prédire et manipuler nos futures actions.</p>
-                    </div>
-
-                    <div class="evidence-card">
-                        <i class="fas fa-radiation evidence-icon"></i>
-                        <h3>Radiations Programmées</h3>
-                        <p>Les écrans émettent des radiations spécifiques qui affectent notre système endocrinien, modifiant nos hormones et notre humeur selon des algorithmes prédéfinis.</p>
+                    
+                    <div class="about-card fade-in">
+                        <div class="card-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3 class="card-title">Protection Totale</h3>
+                        <p>Un système de sécurité impénétrable qui protège l'empire contre toutes les menaces extérieures.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <div class="container">
-            <div class="warning-banner">
-                <div class="warning-content">
-                    <h2><i class="fas fa-exclamation-triangle"></i> ALERTE ROUGE</h2>
-                    <p>Vous êtes actuellement surveillé par votre écran. Chaque seconde passée à lire ce message renforce leur contrôle sur votre esprit. Partagez cette information avant qu'il ne soit trop tard !</p>
+        <section id="empire" class="empire">
+            <div class="container">
+                <h2 class="section-title">L'Empire en Chiffres</h2>
+                <div class="empire-stats">
+                    <div class="stat-card">
+                        <span class="stat-number">∞</span>
+                        <div class="stat-label">Pouvoir Absolu</div>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">100M+</span>
+                        <div class="stat-label">Sujets Numériques</div>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">24/7</span>
+                        <div class="stat-label">Surveillance Active</div>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">999+</span>
+                        <div class="stat-label">Décrets Impériaux</div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <section id="truth">
+        <section id="contact" class="contact">
             <div class="container">
-                <h2 class="section-title">REJOIGNEZ LES ÉVEILLÉS</h2>
+                <h2 class="section-title">Audience Impériale</h2>
+                <p style="text-align: center; margin-bottom: 3rem; color: var(--text-gray);">Sollicitez une audience auprès de Sa Majesté Tanguy</p>
                 
-                <div class="truth-form">
-                    <form>
-                        <div class="form-group">
-                            <label for="name"><i class="fas fa-user"></i> Nom de Code</label>
-                            <input type="text" id="name" name="name" placeholder="Entrez votre pseudonyme...">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email"><i class="fas fa-envelope-open"></i> Email Sécurisé</label>
-                            <input type="email" id="email" name="email" placeholder="contact@email-crypte.com">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="experience"><i class="fas fa-comments"></i> Votre Expérience</label>
-                            <textarea id="experience" name="experience" rows="4" placeholder="Racontez-nous votre expérience avec la manipulation par écran..."></textarea>
-                        </div>
-                        
-                        <button type="submit" class="cta-button">
-                            <i class="fas fa-paper-plane"></i> REJOINDRE LA RÉSISTANCE
-                        </button>
-                    </form>
-                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="nom">Nom du Sujet</label>
+                        <input type="text" id="nom" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Adresse Électronique</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Requête Impériale</label>
+                        <textarea id="message" rows="6" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i> Soumettre la Requête
+                    </button>
+                </form>
             </div>
         </section>
     </main>
 
-    <footer id="contact">
+    <footer>
         <div class="container">
-            <div class="social-links">
-                <a href="#" title="Canal Telegram"><i class="fab fa-telegram"></i></a>
-                <a href="#" title="Forum Sécurisé"><i class="fas fa-comments"></i></a>
-                <a href="#" title="Radio Underground"><i class="fas fa-broadcast-tower"></i></a>
-                <a href="#" title="Réseau Tor"><i class="fas fa-user-secret"></i></a>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Empire Digital</h3>
+                    <p>Sous le règne éclairé de Tanguy le Dictateur</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Liens Officiels</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Déclaration</h3>
+                    <p>"L'avenir appartient à ceux qui osent régner sur le digital"</p>
+                </div>
             </div>
-            <p>&copy; 2024 Réveil Digital - La vérité ne peut être cachée éternellement</p>
-            <p><small>Site crypté et protégé - Naviguez en mode incognito</small></p>
+            
+            <hr style="border: 1px solid rgba(212, 175, 55, 0.2); margin: 2rem 0;">
+            <p>&copy; 2024 Empire Tanguy. Tous droits réservés sous Sa Majesté.</p>
         </div>
     </footer>
 
@@ -503,72 +550,96 @@
             });
         });
 
+        // Header background on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(26, 26, 46, 0.98)';
+            } else {
+                header.style.background = 'rgba(26, 26, 46, 0.95)';
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe cards for animation
+        document.querySelectorAll('.about-card, .stat-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.8s ease';
+            observer.observe(card);
+        });
+
         // Form submission
-        document.querySelector('form').addEventListener('submit', function(e) {
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
             e.preventDefault();
             
             // Simulate form submission
-            const button = this.querySelector('button[type="submit"]');
-            const originalText = button.innerHTML;
+            const submitBtn = document.querySelector('.submit-btn');
+            const originalText = submitBtn.innerHTML;
             
-            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> TRANSMISSION EN COURS...';
-            button.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
+            submitBtn.disabled = true;
             
             setTimeout(() => {
-                button.innerHTML = '<i class="fas fa-check"></i> MESSAGE REÇU';
+                submitBtn.innerHTML = '<i class="fas fa-check"></i> Requête Reçue!';
                 setTimeout(() => {
-                    button.innerHTML = originalText;
-                    button.disabled = false;
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
                     this.reset();
                 }, 2000);
-            }, 3000);
+            }, 2000);
         });
 
-        // Dynamic background effects
-        function createFloatingElements() {
-            const hero = document.querySelector('.hero');
+        // Add floating particles effect
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.style.position = 'fixed';
+            particle.style.width = '2px';
+            particle.style.height = '2px';
+            particle.style.background = 'var(--accent-gold)';
+            particle.style.borderRadius = '50%';
+            particle.style.pointerEvents = 'none';
+            particle.style.opacity = '0.6';
+            particle.style.zIndex = '-1';
+            particle.style.left = Math.random() * 100 + 'vw';
+            particle.style.top = '100vh';
+            particle.style.animation = 'floatUp 8s linear forwards';
             
-            for (let i = 0; i < 5; i++) {
-                const element = document.createElement('div');
-                element.style.cssText = `
-                    position: absolute;
-                    width: 4px;
-                    height: 4px;
-                    background: #00ff41;
-                    border-radius: 50%;
-                    opacity: 0.7;
-                    animation: float ${3 + Math.random() * 4}s ease-in-out infinite;
-                    left: ${Math.random() * 100}%;
-                    top: ${Math.random() * 100}%;
-                    box-shadow: 0 0 10px #00ff41;
-                `;
-                hero.appendChild(element);
-            }
+            document.body.appendChild(particle);
+            
+            setTimeout(() => {
+                particle.remove();
+            }, 8000);
         }
 
-        // Add floating animation keyframes
+        // Add CSS animation for particles
         const style = document.createElement('style');
         style.textContent = `
-            @keyframes float {
-                0%, 100% { transform: translateY(0px) scale(1); }
-                50% { transform: translateY(-20px) scale(1.2); }
+            @keyframes floatUp {
+                to {
+                    transform: translateY(-100vh) rotate(360deg);
+                    opacity: 0;
+                }
             }
         `;
         document.head.appendChild(style);
 
-        // Initialize effects
-        window.addEventListener('load', () => {
-            createFloatingElements();
-        });
-
-        // Scroll effects
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const hero = document.querySelector('.hero');
-            if (hero) {
-                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-            }
-        });
+        // Create particles periodically
+        setInterval(createParticle, 3000);
     </script>
 </body>
 </html>
