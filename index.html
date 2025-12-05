@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cabinet d'Avocats - Défense des Droits Étudiants</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Sup de Vinci - Excellence & Innovation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -14,10 +14,10 @@
         }
 
         body {
-            font-family: 'Source Sans Pro', sans-serif;
+            font-family: 'Poppins', sans-serif;
             line-height: 1.6;
-            color: #2c3e50;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            color: #333;
+            overflow-x: hidden;
         }
 
         .container {
@@ -28,9 +28,9 @@
 
         /* Header */
         header {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 80px 0;
+            padding: 2rem 0;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -39,473 +39,586 @@
         header::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23ffffff" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="%23ffffff" opacity="0.1"/><circle cx="50" cy="10" r="1" fill="%23ffffff" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>') repeat;
-            opacity: 0.1;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
         }
 
-        .hero-content {
-            position: relative;
-            z-index: 1;
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
         }
 
         .logo {
             width: 80px;
             height: 80px;
-            margin: 0 auto 20px;
-            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            background: linear-gradient(45deg, #ffd700, #ffed4a);
             border-radius: 50%;
+            margin: 0 auto 1rem;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 2rem;
-            color: #1e3c72;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            animation: pulse 2s infinite;
+            transition: transform 0.3s ease;
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+        .logo:hover {
+            transform: scale(1.1) rotate(10deg);
         }
 
         h1 {
-            font-family: 'Playfair Display', serif;
             font-size: 3rem;
-            margin-bottom: 20px;
             font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .subtitle {
-            font-size: 1.3rem;
-            margin-bottom: 30px;
+            font-size: 1.2rem;
             opacity: 0.9;
             font-weight: 300;
         }
 
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(45deg, #e74c3c, #c0392b);
-            color: white;
-            padding: 15px 40px;
+        /* Navigation */
+        nav {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
             text-decoration: none;
-            border-radius: 30px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            color: #333;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 20px rgba(231, 76, 60, 0.3);
+            position: relative;
         }
 
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(231, 76, 60, 0.4);
+        .nav-links a:hover {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            transform: translateY(-2px);
         }
 
-        /* Services Section */
-        .services {
-            padding: 100px 0;
-            background: white;
+        /* Main Content */
+        main {
+            padding: 4rem 0;
         }
 
-        .section-title {
-            font-family: 'Playfair Display', serif;
+        .intro {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .intro h2 {
             font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 20px;
-            color: #2c3e50;
+            color: #333;
+            margin-bottom: 1rem;
+            position: relative;
         }
 
-        .section-subtitle {
-            text-align: center;
+        .intro h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .intro p {
             font-size: 1.1rem;
-            color: #7f8c8d;
-            margin-bottom: 60px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+            color: #666;
+            max-width: 800px;
+            margin: 2rem auto 0;
         }
 
-        .services-grid {
+        /* Benefits Grid */
+        .benefits-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-top: 60px;
+            gap: 2rem;
+            margin: 4rem 0;
         }
 
-        .service-card {
+        .benefit-card {
             background: white;
-            padding: 40px 30px;
-            border-radius: 15px;
+            padding: 2rem;
+            border-radius: 20px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.1);
             text-align: center;
             transition: all 0.3s ease;
-            border: 1px solid #f8f9fa;
+            position: relative;
+            overflow: hidden;
         }
 
-        .service-card:hover {
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .benefit-card:hover::before {
+            left: 100%;
+        }
+
+        .benefit-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
         }
 
-        .service-icon {
+        .benefit-icon {
             width: 80px;
             height: 80px;
-            margin: 0 auto 25px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0 auto 1.5rem;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 2rem;
             color: white;
+            transition: transform 0.3s ease;
         }
 
-        .service-card:nth-child(2) .service-icon {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        .benefit-card:hover .benefit-icon {
+            transform: scale(1.2) rotate(360deg);
         }
 
-        .service-card:nth-child(3) .service-icon {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        .icon-innovation {
+            background: linear-gradient(135deg, #667eea, #764ba2);
         }
 
-        .service-card h3 {
-            font-family: 'Playfair Display', serif;
+        .icon-career {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+        }
+
+        .icon-network {
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+        }
+
+        .icon-excellence {
+            background: linear-gradient(135deg, #43e97b, #38f9d7);
+        }
+
+        .icon-future {
+            background: linear-gradient(135deg, #fa709a, #fee140);
+        }
+
+        .icon-community {
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+        }
+
+        .benefit-card h3 {
             font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: #2c3e50;
+            color: #333;
+            margin-bottom: 1rem;
+            font-weight: 600;
         }
 
-        .service-card p {
-            color: #7f8c8d;
-            line-height: 1.8;
+        .benefit-card p {
+            color: #666;
+            line-height: 1.7;
         }
 
-        /* Contact Section */
-        .contact {
-            padding: 100px 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+        /* Testimonials */
+        .testimonials {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 4rem 0;
+            margin: 4rem 0;
         }
 
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .contact-info h2 {
-            font-family: 'Playfair Display', serif;
+        .testimonials h2 {
+            text-align: center;
             font-size: 2.5rem;
-            margin-bottom: 30px;
+            color: #333;
+            margin-bottom: 3rem;
         }
 
-        .contact-item {
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .testimonial:hover {
+            transform: translateY(-5px);
+        }
+
+        .testimonial::before {
+            content: '"';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-size: 4rem;
+            color: #667eea;
+            opacity: 0.3;
+        }
+
+        .testimonial-author {
             display: flex;
             align-items: center;
-            margin-bottom: 25px;
+            margin-top: 1.5rem;
         }
 
-        .contact-item i {
+        .author-avatar {
             width: 50px;
             height: 50px;
-            background: rgba(255,255,255,0.2);
+            background: linear-gradient(45deg, #667eea, #764ba2);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 20px;
-            font-size: 1.2rem;
-        }
-
-        .contact-form {
-            background: rgba(255,255,255,0.1);
-            padding: 40px;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 15px;
-            border: none;
-            border-radius: 8px;
-            background: rgba(255,255,255,0.9);
-            color: #2c3e50;
-            font-size: 1rem;
-        }
-
-        .form-group textarea {
-            height: 120px;
-            resize: vertical;
-        }
-
-        .submit-btn {
-            background: linear-gradient(45deg, #e74c3c, #c0392b);
             color: white;
-            padding: 15px 40px;
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            width: 100%;
+            font-size: 1.2rem;
+            margin-right: 1rem;
         }
 
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        .author-info h4 {
+            color: #333;
+            margin-bottom: 0.2rem;
+        }
+
+        .author-info span {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Stats Section */
+        .stats {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-item {
+            padding: 1rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* CTA Section */
+        .cta {
+            text-align: center;
+            padding: 4rem 0;
+            background: #f8f9fa;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .cta p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.6);
         }
 
         /* Footer */
         footer {
-            background: #2c3e50;
+            background: #333;
             color: white;
-            padding: 60px 0 30px;
             text-align: center;
+            padding: 2rem 0;
         }
 
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
+        footer p {
+            margin-bottom: 1rem;
         }
 
-        .footer-section h3 {
-            font-family: 'Playfair Display', serif;
-            margin-bottom: 20px;
-            color: #ffd700;
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
         }
 
-        .footer-section p,
-        .footer-section a {
-            color: #bdc3c7;
-            text-decoration: none;
-            line-height: 1.8;
-        }
-
-        .footer-section a:hover {
-            color: #ffd700;
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
             transition: color 0.3s ease;
         }
 
-        .footer-bottom {
-            border-top: 1px solid #34495e;
-            padding-top: 30px;
-            color: #95a5a6;
+        .social-links a:hover {
+            color: #667eea;
         }
 
-        /* Responsive */
+        /* Responsive Design */
         @media (max-width: 768px) {
             h1 {
                 font-size: 2rem;
             }
 
-            .subtitle {
-                font-size: 1.1rem;
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
             }
 
-            .contact-content {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .section-title {
+            .intro h2, .testimonials h2, .cta h2 {
                 font-size: 2rem;
             }
-        }
 
-        /* Animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 1s ease forwards;
-        }
+            .benefits-grid, .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
 
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
-        .service-card:nth-child(1) {
-            animation-delay: 0.1s;
-        }
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
 
-        .service-card:nth-child(2) {
-            animation-delay: 0.2s;
-        }
+            .benefit-card, .testimonial {
+                padding: 1.5rem;
+            }
 
-        .service-card:nth-child(3) {
-            animation-delay: 0.3s;
+            .stat-number {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
 <body>
     <header>
         <div class="container">
-            <div class="hero-content">
-                <div class="logo">
-                    <i class="fas fa-balance-scale"></i>
-                </div>
-                <h1>Cabinet Juridique Spécialisé</h1>
-                <p class="subtitle">Défense des droits étudiants et actions judiciaires contre les établissements d'enseignement</p>
-                <a href="#contact" class="cta-button">
-                    <i class="fas fa-phone"></i> Consultation Gratuite
-                </a>
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
             </div>
+            <h1>Sup de Vinci</h1>
+            <p class="subtitle">L'Excellence au Service de Votre Avenir</p>
         </div>
     </header>
 
-    <section class="services">
+    <nav>
         <div class="container">
-            <h2 class="section-title">Nos Domaines d'Expertise</h2>
-            <p class="section-subtitle">Nous défendons vos droits face aux pratiques abusives des établissements d'enseignement supérieur</p>
-            
-            <div class="services-grid">
-                <div class="service-card fade-in">
-                    <div class="service-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h3>Droits Étudiants</h3>
-                    <p>Défense contre les exclusions abusives, les discriminations, et les violations des droits fondamentaux des étudiants dans l'enseignement supérieur.</p>
-                </div>
-                
-                <div class="service-card fade-in">
-                    <div class="service-icon">
-                        <i class="fas fa-euro-sign"></i>
-                    </div>
-                    <h3>Contentieux Financier</h3>
-                    <p>Récupération des frais de scolarité indûment perçus, contestation des augmentations abusives, et actions en remboursement.</p>
-                </div>
-                
-                <div class="service-card fade-in">
-                    <div class="service-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Protection Juridique</h3>
-                    <p>Actions collectives, recours administratifs, et représentation devant les juridictions compétentes pour faire valoir vos droits.</p>
-                </div>
-            </div>
+            <ul class="nav-links">
+                <li><a href="#excellence"><i class="fas fa-star"></i> Excellence</a></li>
+                <li><a href="#innovation"><i class="fas fa-lightbulb"></i> Innovation</a></li>
+                <li><a href="#carriere"><i class="fas fa-rocket"></i> Carrière</a></li>
+                <li><a href="#communaute"><i class="fas fa-users"></i> Communauté</a></li>
+            </ul>
         </div>
-    </section>
+    </nav>
 
-    <section class="contact" id="contact">
+    <main>
         <div class="container">
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h2>Contactez-Nous</h2>
-                    <p style="margin-bottom: 40px;">Consultation gratuite et confidentielle. Nous étudions votre dossier et vous conseillons sur vos recours possibles.</p>
-                    
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <strong>Téléphone</strong><br>
-                            01 XX XX XX XX
+            <section class="intro">
+                <h2>Pourquoi Choisir Sup de Vinci ?</h2>
+                <p>Découvrez les avantages exceptionnels d'intégrer l'une des écoles les plus prestigieuses de France. Sup de Vinci vous offre bien plus qu'une formation : une véritable transformation personnelle et professionnelle qui vous propulsera vers les sommets de la réussite.</p>
+            </section>
+
+            <section class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon icon-innovation">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Innovation Permanente</h3>
+                    <p>Plongez dans un environnement où l'innovation est au cœur de chaque projet. Nos laboratoires de pointe et nos partenariats avec les leaders technologiques vous permettent de travailler sur les technologies de demain.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon icon-career">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Carrière Accélérée</h3>
+                    <p>Bénéficiez d'un taux d'employabilité de 95% à la sortie. Nos diplômés intègrent les plus grandes entreprises avec des salaires 30% supérieurs à la moyenne nationale grâce à notre réseau d'entreprises partenaires.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon icon-network">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3>Réseau d'Excellence</h3>
+                    <p>Rejoignez un réseau de plus de 15 000 alumni présents dans le monde entier. Ce réseau vous ouvre les portes des opportunités professionnelles les plus prestigieuses et vous accompagne tout au long de votre carrière.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon icon-excellence">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3>Excellence Pédagogique</h3>
+                    <p>Apprenez auprès de professeurs reconnus internationalement et de professionnels en activité. Notre approche pédagogique innovante combine théorie de haut niveau et pratique intensive pour une formation complète.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon icon-future">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Vision Internationale</h3>
+                    <p>Étudiez dans un contexte international avec nos campus à l'étranger et nos programmes d'échange. Développez une vision globale indispensable dans le monde professionnel d'aujourd'hui.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon icon-community">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Esprit Communautaire</h3>
+                    <p>Intégrez une communauté bienveillante où l'entraide et l'émulation collective favorisent l'épanouissement personnel. Nos associations étudiantes dynamiques enrichissent votre expérience universitaire.</p>
+                </div>
+            </section>
+        </div>
+
+        <section class="testimonials">
+            <div class="container">
+                <h2>Témoignages de nos Diplômés</h2>
+                <div class="testimonial-grid">
+                    <div class="testimonial">
+                        <p>Sup de Vinci a transformé ma vision du monde professionnel. Les projets concrets et l'accompagnement personnalisé m'ont permis de décrocher le poste de mes rêves chez Google.</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">M</div>
+                            <div class="author-info">
+                                <h4>Marie Dubois</h4>
+                                <span>Ingénieure IA chez Google</span>
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <strong>Email</strong><br>
-                            contact@cabinet-juridique.fr
+
+                    <div class="testimonial">
+                        <p>L'environnement international et les opportunités de stage à l'étranger m'ont ouvert des horizons incroyables. Aujourd'hui, je dirige une équipe de 50 personnes à Londres.</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">A</div>
+                            <div class="author-info">
+                                <h4>Antoine Martin</h4>
+                                <span>Directeur Technique chez Revolut</span>
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <strong>Adresse</strong><br>
-                            123 Avenue de la Justice<br>
-                            75001 Paris
+
+                    <div class="testimonial">
+                        <p>Le réseau alumni est exceptionnel. Grâce aux contacts que j'ai pu développer, j'ai pu créer ma propre startup qui emploie maintenant 25 personnes.</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">S</div>
+                            <div class="author-info">
+                                <h4>Sarah Leclerc</h4>
+                                <span>CEO & Fondatrice de TechStart</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-                
-                <form class="contact-form" id="contactForm">
-                    <div class="form-group">
-                        <label for="name">Nom complet</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="phone">Téléphone</label>
-                        <input type="tel" id="phone" name="phone">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message">Décrivez votre situation</label>
-                        <textarea id="message" name="message" placeholder="Expliquez-nous les problèmes rencontrés avec votre établissement..." required></textarea>
-                    </div>
-                    
-                    <button type="submit" class="submit-btn">
-                        <i class="fas fa-paper-plane"></i> Envoyer ma demande
-                    </button>
-                </form>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <section class="stats">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number">95%</span>
+                        <span class="stat-label">Taux d'employabilité</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">15k+</span>
+                        <span class="stat-label">Alumni dans le monde</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">200+</span>
+                        <span class="stat-label">Entreprises partenaires</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">45k€</span>
+                        <span class="stat-label">Salaire moyen à la sortie</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta">
+            <div class="container">
+                <h2>Rejoignez l'Excellence</h2>
+                <p>Ne laissez pas passer cette opportunité unique de transformer votre avenir</p>
+                <a href="#" class="cta-button">
+                    <i class="fas fa-paper-plane"></i> Candidater Maintenant
+                </a>
+            </div>
+        </section>
+    </main>
 
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Cabinet Juridique</h3>
-                    <p>Spécialisé dans la défense des droits étudiants et les contentieux avec les établissements d'enseignement supérieur.</p>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Services</h3>
-                    <p><a href="#">Consultation juridique</a></p>
-                    <p><a href="#">Actions collectives</a></p>
-                    <p><a href="#">Recours administratifs</a></p>
-                    <p><a href="#">Contentieux judiciaires</a></p>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Informations</h3>
-                    <p><a href="#">Mentions légales</a></p>
-                    <p><a href="#">Confidentialité</a></p>
-                    <p><a href="#">Conditions générales</a></p>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2024 Cabinet Juridique Spécialisé. Tous droits réservés.</p>
+            <p>&copy; 2024 Sup de Vinci - L'Excellence à Votre Portée</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
             </div>
         </div>
     </footer>
 
     <script>
-        // Smooth scrolling
+        // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -519,40 +632,75 @@
             });
         });
 
-        // Form handling
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Simple form validation
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-            
-            if (name && email && message) {
-                alert('Merci pour votre message. Nous vous recontacterons dans les plus brefs délais.');
-                this.reset();
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(255,255,255,0.98)';
+                nav.style.boxShadow = '0 2px 30px rgba(0,0,0,0.15)';
             } else {
-                alert('Veuillez remplir tous les champs obligatoires.');
+                nav.style.background = 'rgba(255,255,255,0.95)';
+                nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
             }
         });
 
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+        // Animate stats on scroll
+        const animateStats = () => {
+            const stats = document.querySelectorAll('.stat-number');
+            const statsSection = document.querySelector('.stats');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        stats.forEach(stat => {
+                            const target = parseInt(stat.textContent.replace(/[^0-9]/g, ''));
+                            let current = 0;
+                            const increment = target / 100;
+                            const timer = setInterval(() => {
+                                current += increment;
+                                if (current >= target) {
+                                    current = target;
+                                    clearInterval(timer);
+                                }
+                                const suffix = stat.textContent.includes('%') ? '%' : 
+                                              stat.textContent.includes('k') ? 'k+' : 
+                                              stat.textContent.includes('€') ? '€' : '';
+                                stat.textContent = Math.floor(current) + suffix;
+                            }, 20);
+                        });
+                        observer.unobserve(entry.target);
+                    }
+                });
+            });
+            
+            observer.observe(statsSection);
         };
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
-                }
-            });
-        }, observerOptions);
+        // Initialize animations
+        document.addEventListener('DOMContentLoaded', animateStats);
 
-        document.querySelectorAll('.service-card').forEach(card => {
-            observer.observe(card);
-        });
+        // Add entrance animations
+        const observeElements = () => {
+            const elements = document.querySelectorAll('.benefit-card, .testimonial');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            elements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(50px)';
+                el.style.transition = 'all 0.6s ease';
+                observer.observe(el);
+            });
+        };
+
+        document.addEventListener('DOMContentLoaded', observeElements);
     </script>
 </body>
 </html>
