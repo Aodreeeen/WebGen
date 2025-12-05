@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChessPlay Pro - Jeu d'Échecs en Ligne</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>Tanguy Actu - L'actualité par Tanguy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -14,21 +14,25 @@
         }
 
         :root {
-            --primary: #2C3E50;
-            --secondary: #E8F4FD;
-            --accent: #3498DB;
-            --gold: #F39C12;
-            --dark: #1A252F;
-            --light: #ECF0F1;
-            --success: #27AE60;
-            --danger: #E74C3C;
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #f59e0b;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --background: #ffffff;
+            --surface: #f8fafc;
+            --border: #e5e7eb;
+            --success: #10b981;
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-news: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
         }
 
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, var(--secondary) 0%, #ffffff 100%);
-            min-height: 100vh;
-            color: var(--primary);
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--background);
         }
 
         .container {
@@ -38,44 +42,243 @@
         }
 
         /* Header */
-        header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+        .header {
+            background: var(--gradient-primary);
             color: white;
-            padding: 1rem 0;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            padding: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="%23ffffff" opacity="0.1"/><circle cx="80" cy="40" r="1" fill="%23ffffff" opacity="0.1"/><circle cx="40" cy="80" r="1.5" fill="%23ffffff" opacity="0.1"/></svg>');
         }
 
         .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            position: relative;
+            z-index: 1;
+            text-align: center;
         }
 
         .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
+            font-size: 3rem;
             font-weight: 700;
-            display: flex;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        .journalist-badge {
+            display: inline-flex;
             align-items: center;
             gap: 0.5rem;
+            background: rgba(255,255,255,0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            margin-top: 1rem;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
         }
 
-        .logo i {
-            color: var(--gold);
-            transform: rotate(45deg);
+        .journalist-badge:hover {
+            transform: scale(1.05);
         }
 
-        .nav-buttons {
+        /* Navigation */
+        .nav {
+            background: var(--background);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-content {
             display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Main Content */
+        .main {
+            padding: 3rem 0;
+        }
+
+        .featured-news {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--gradient-primary);
+            border-radius: 2px;
+        }
+
+        .featured-card {
+            background: var(--surface);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--border);
+        }
+
+        .featured-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+
+        .featured-image {
+            height: 300px;
+            background: var(--gradient-secondary);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .featured-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 25%, transparent 25%), linear-gradient(-45deg, rgba(255,255,255,0.1) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, rgba(255,255,255,0.1) 75%), linear-gradient(-45deg, transparent 75%, rgba(255,255,255,0.1) 75%);
+            background-size: 20px 20px;
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-20px); }
+            100% { transform: translateX(20px); }
+        }
+
+        .featured-icon {
+            font-size: 4rem;
+            color: white;
+            z-index: 1;
+            position: relative;
+        }
+
+        .featured-content {
+            padding: 2rem;
+        }
+
+        .featured-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--gradient-news);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .featured-title {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .featured-excerpt {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .featured-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
             gap: 1rem;
         }
 
-        .btn {
-            padding: 0.75rem 1.5rem;
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+
+        .author-details h4 {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .author-details span {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .read-more {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.75rem 2rem;
             border: none;
-            border-radius: 8px;
-            cursor: pointer;
+            border-radius: 25px;
             font-weight: 500;
+            cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
             display: inline-flex;
@@ -83,703 +286,392 @@
             gap: 0.5rem;
         }
 
-        .btn-primary {
-            background: var(--accent);
-            color: white;
+        .read-more:hover {
+            background: var(--secondary-color);
+            transform: translateX(5px);
         }
 
-        .btn-secondary {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-        }
-
-        .btn-primary:hover {
-            background: #2980B9;
-        }
-
-        .btn-secondary:hover {
-            background: white;
-            color: var(--primary);
-        }
-
-        /* Main Game Section */
-        .game-section {
-            padding: 3rem 0;
-        }
-
-        .game-container {
+        /* Other News */
+        .other-news {
             display: grid;
-            grid-template-columns: 1fr auto 300px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
-            align-items: start;
+            margin-top: 3rem;
         }
 
-        .game-info {
-            background: white;
-            padding: 2rem;
+        .news-card {
+            background: var(--background);
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .game-info h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
-
-        .game-info p {
-            color: #7F8C8D;
-            line-height: 1.6;
-            margin-bottom: 2rem;
-        }
-
-        .game-controls {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        /* Chess Board */
-        .chess-board {
-            width: 480px;
-            height: 480px;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-            padding: 20px;
-            margin: 0 auto;
-        }
-
-        .board {
-            width: 100%;
-            height: 100%;
-            display: grid;
-            grid-template-columns: repeat(8, 1fr);
-            grid-template-rows: repeat(8, 1fr);
-            border: 3px solid var(--primary);
-            border-radius: 8px;
             overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border);
         }
 
-        .square {
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+        }
+
+        .news-image {
+            height: 200px;
+            background: var(--gradient-news);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
             position: relative;
         }
 
-        .square.light {
-            background: #F0D9B5;
+        .news-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 70%, rgba(255,255,255,0.2) 20%, transparent 20%), radial-gradient(circle at 70% 30%, rgba(255,255,255,0.15) 15%, transparent 15%);
         }
 
-        .square.dark {
-            background: #B58863;
-        }
-
-        .square:hover {
-            opacity: 0.8;
-            transform: scale(0.95);
-        }
-
-        .square.selected {
-            background: var(--accent) !important;
-            box-shadow: inset 0 0 0 3px var(--gold);
-        }
-
-        .square.possible-move {
-            background: var(--success) !important;
-            opacity: 0.7;
-        }
-
-        .piece {
-            font-size: 2.5rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            transition: transform 0.3s ease;
-        }
-
-        .piece:hover {
-            transform: scale(1.1);
-        }
-
-        /* Game Panel */
-        .game-panel {
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
-
-        .panel-header {
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            color: white;
-            padding: 1.5rem;
-            text-align: center;
-        }
-
-        .panel-header h3 {
-            font-family: 'Playfair Display', serif;
-            margin-bottom: 0.5rem;
-        }
-
-        .game-status {
+        .news-content {
             padding: 1.5rem;
         }
 
-        .player-info {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem;
-            margin: 0.5rem 0;
-            border-radius: 8px;
-            background: var(--light);
-        }
-
-        .player-info.active {
-            background: linear-gradient(135deg, var(--accent), #5DADE2);
-            color: white;
-        }
-
-        .timer {
+        .news-title {
+            font-size: 1.25rem;
             font-weight: 600;
-            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
         }
 
-        .moves-history {
-            max-height: 200px;
-            overflow-y: auto;
-            padding: 1rem;
-            background: #F8F9FA;
-            margin: 1rem;
-            border-radius: 8px;
+        .news-excerpt {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
         }
 
-        .move-item {
-            padding: 0.5rem;
-            border-bottom: 1px solid #DEE2E6;
-            font-family: 'Courier New', monospace;
+        .news-date {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text-primary);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
         }
 
         /* Responsive */
-        @media (max-width: 1024px) {
-            .game-container {
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .logo {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .featured-title {
+                font-size: 1.5rem;
+            }
+
+            .other-news {
                 grid-template-columns: 1fr;
-                gap: 2rem;
             }
 
-            .chess-board {
-                width: 100%;
-                max-width: 480px;
-            }
-
-            .game-panel {
-                max-width: 480px;
-                margin: 0 auto;
+            .featured-meta {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
             }
         }
 
-        @media (max-width: 768px) {
-            .header-content {
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .nav-content {
                 flex-direction: column;
                 gap: 1rem;
             }
 
-            .nav-buttons {
-                width: 100%;
-                justify-content: center;
+            .featured-content {
+                padding: 1.5rem;
             }
-
-            .chess-board {
-                width: 100%;
-                height: auto;
-                aspect-ratio: 1;
-                padding: 15px;
-            }
-
-            .game-info h1 {
-                font-size: 2rem;
-            }
-
-            .game-controls {
-                justify-content: center;
-            }
-        }
-
-        /* Animations */
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .game-section {
-            animation: slideIn 0.8s ease-out;
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
-        }
-
-        .player-info.active {
-            animation: pulse 2s infinite;
-        }
-
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-content {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            max-width: 400px;
-            margin: 0 20px;
-        }
-
-        .modal-content h2 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .close-modal {
-            margin-top: 1rem;
         }
     </style>
 </head>
 <body>
-    <header>
+    <header class="header">
         <div class="container">
             <div class="header-content">
-                <div class="logo">
-                    <i class="fas fa-chess-king"></i>
-                    ChessPlay Pro
-                </div>
-                <div class="nav-buttons">
-                    <a href="#" class="btn btn-secondary">
-                        <i class="fas fa-user"></i>
-                        Connexion
-                    </a>
-                    <a href="#" class="btn btn-primary">
-                        <i class="fas fa-crown"></i>
-                        Premium
-                    </a>
+                <h1 class="logo">Tanguy Actu</h1>
+                <p class="tagline">L'actualité décryptée par Tanguy</p>
+                <div class="journalist-badge">
+                    <i class="fas fa-user-tie"></i>
+                    <span>Journaliste Professionnel</span>
                 </div>
             </div>
         </div>
     </header>
 
-    <main class="game-section">
+    <nav class="nav">
         <div class="container">
-            <div class="game-container">
-                <div class="game-info">
-                    <h1><i class="fas fa-chess"></i> Jeu d'Échecs</h1>
-                    <p>Affrontez des joueurs du monde entier dans des parties d'échecs passionnantes. Améliorez votre stratégie et grimpez dans le classement mondial !</p>
-                    <div class="game-controls">
-                        <button class="btn btn-primary" onclick="startNewGame()">
-                            <i class="fas fa-play"></i>
-                            Nouvelle Partie
-                        </button>
-                        <button class="btn btn-secondary" onclick="resetBoard()">
-                            <i class="fas fa-redo"></i>
-                            Réinitialiser
-                        </button>
-                    </div>
+            <div class="nav-content">
+                <div class="nav-brand">
+                    <i class="fas fa-newspaper" style="color: var(--primary-color); font-size: 1.5rem;"></i>
                 </div>
-
-                <div class="chess-board">
-                    <div class="board" id="chessBoard">
-                        <!-- Les cases seront générées par JavaScript -->
-                    </div>
-                </div>
-
-                <div class="game-panel">
-                    <div class="panel-header">
-                        <h3><i class="fas fa-info-circle"></i> Partie en Cours</h3>
-                        <p>Mode: Partie Rapide</p>
-                    </div>
-                    <div class="game-status">
-                        <div class="player-info active" id="whitePlayer">
-                            <span><i class="fas fa-chess-king" style="color: white; text-shadow: 1px 1px 2px black;"></i> Blancs</span>
-                            <span class="timer" id="whiteTimer">10:00</span>
-                        </div>
-                        <div class="player-info" id="blackPlayer">
-                            <span><i class="fas fa-chess-king" style="color: black;"></i> Noirs</span>
-                            <span class="timer" id="blackTimer">10:00</span>
-                        </div>
-                    </div>
-                    <div class="moves-history">
-                        <h4><i class="fas fa-history"></i> Historique des Coups</h4>
-                        <div id="movesHistory">
-                            <div class="move-item">1. e4 e5</div>
-                            <div class="move-item">2. Nf3 Nc6</div>
-                            <div class="move-item">3. Bb5 a6</div>
-                        </div>
-                    </div>
-                </div>
+                <ul class="nav-links">
+                    <li><a href="#accueil"><i class="fas fa-home"></i> Accueil</a></li>
+                    <li><a href="#actualites"><i class="fas fa-newspaper"></i> Actualités</a></li>
+                    <li><a href="#societe"><i class="fas fa-users"></i> Société</a></li>
+                    <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
             </div>
+        </div>
+    </nav>
+
+    <main class="main">
+        <div class="container">
+            <section class="featured-news">
+                <h2 class="section-title">À la Une</h2>
+                <article class="featured-card">
+                    <div class="featured-image">
+                        <i class="fas fa-heart featured-icon"></i>
+                    </div>
+                    <div class="featured-content">
+                        <div class="featured-tag">
+                            <i class="fas fa-star"></i>
+                            <span>Société</span>
+                        </div>
+                        <h3 class="featured-title">Krakotte fait son coming out : une décision courageuse qui inspire</h3>
+                        <p class="featured-excerpt">
+                            Dans un message émouvant publié sur les réseaux sociaux, Krakotte a annoncé son homosexualité, 
+                            brisant les tabous et encourageant d'autres personnes à vivre leur vérité. Une démarche saluée 
+                            par la communauté et ses proches, qui témoigne d'une évolution positive des mentalités.
+                        </p>
+                        <div class="featured-meta">
+                            <div class="author-info">
+                                <div class="author-avatar">T</div>
+                                <div class="author-details">
+                                    <h4>Tanguy</h4>
+                                    <span>Journaliste - Il y a 2 heures</span>
+                                </div>
+                            </div>
+                            <a href="#" class="read-more">
+                                Lire l'article
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+            <section>
+                <h2 class="section-title">Autres Actualités</h2>
+                <div class="other-news">
+                    <article class="news-card">
+                        <div class="news-image">
+                            <i class="fas fa-globe" style="font-size: 3rem; color: white; z-index: 1;"></i>
+                        </div>
+                        <div class="news-content">
+                            <h3 class="news-title">Les réactions positives se multiplient suite à l'annonce</h3>
+                            <p class="news-excerpt">
+                                Personnalités publiques, associations et citoyens saluent le courage de Krakotte. 
+                                Un élan de solidarité qui montre l'évolution des mentalités.
+                            </p>
+                            <div class="news-date">
+                                <i class="fas fa-clock"></i>
+                                <span>Il y a 1 heure</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="news-card">
+                        <div class="news-image">
+                            <i class="fas fa-comments" style="font-size: 3rem; color: white; z-index: 1;"></i>
+                        </div>
+                        <div class="news-content">
+                            <h3 class="news-title">Interview exclusive : "Je me sens enfin libre"</h3>
+                            <p class="news-excerpt">
+                                Krakotte se confie à Tanguy Actu sur sa démarche, ses motivations et 
+                                l'importance de la visibilité LGBTQ+ dans notre société.
+                            </p>
+                            <div class="news-date">
+                                <i class="fas fa-clock"></i>
+                                <span>Il y a 3 heures</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="news-card">
+                        <div class="news-image">
+                            <i class="fas fa-chart-line" style="font-size: 3rem; color: white; z-index: 1;"></i>
+                        </div>
+                        <div class="news-content">
+                            <h3 class="news-title">Étude : L'acceptation de la diversité en progression</h3>
+                            <p class="news-excerpt">
+                                Une récente enquête montre une amélioration significative de l'acceptation 
+                                de la communauté LGBTQ+ en France ces dernières années.
+                            </p>
+                            <div class="news-date">
+                                <i class="fas fa-clock"></i>
+                                <span>Il y a 5 heures</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
         </div>
     </main>
 
-    <div class="modal" id="gameModal">
-        <div class="modal-content">
-            <h2 id="modalTitle">Partie Terminée</h2>
-            <p id="modalMessage">Félicitations ! Vous avez gagné la partie.</p>
-            <button class="btn btn-primary close-modal" onclick="closeModal()">
-                <i class="fas fa-check"></i>
-                OK
-            </button>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Tanguy Actu</h3>
+                    <p>L'actualité traitée avec professionnalisme et bienveillance par Tanguy, journaliste engagé.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Rubriques</h3>
+                    <p>Actualités • Société • Culture • Interview • Analyses</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-envelope"></i> contact@tanguyactu.fr</p>
+                    <p><i class="fas fa-phone"></i> +33 1 23 45 67 89</p>
+                </div>
+            </div>
+            <div style="border-top: 1px solid #374151; padding-top: 2rem; margin-top: 2rem;">
+                <p>&copy; 2024 Tanguy Actu. Tous droits réservés. | Journalisme de qualité et respectueux.</p>
+            </div>
         </div>
-    </div>
+    </footer>
 
     <script>
-        class ChessGame {
-            constructor() {
-                this.board = this.initializeBoard();
-                this.currentPlayer = 'white';
-                this.selectedSquare = null;
-                this.gameActive = true;
-                this.moveHistory = [];
-                this.whiteTime = 600; // 10 minutes
-                this.blackTime = 600;
-                this.timer = null;
-                
-                this.initializeUI();
-                this.startTimer();
-            }
-
-            initializeBoard() {
-                const initialBoard = [
-                    ['♜', '♞', '♝', '♛', '♚', '♝', '♞', '♜'],
-                    ['♟', '♟', '♟', '♟', '♟', '♟', '♟', '♟'],
-                    ['', '', '', '', '', '', '', ''],
-                    ['', '', '', '', '', '', '', ''],
-                    ['', '', '', '', '', '', '', ''],
-                    ['', '', '', '', '', '', '', ''],
-                    ['♙', '♙', '♙', '♙', '♙', '♙', '♙', '♙'],
-                    ['♖', '♘', '♗', '♕', '♔', '♗', '♘', '♖']
-                ];
-                return initialBoard;
-            }
-
-            initializeUI() {
-                const board = document.getElementById('chessBoard');
-                board.innerHTML = '';
-
-                for (let row = 0; row < 8; row++) {
-                    for (let col = 0; col < 8; col++) {
-                        const square = document.createElement('div');
-                        square.className = `square ${(row + col) % 2 === 0 ? 'light' : 'dark'}`;
-                        square.dataset.row = row;
-                        square.dataset.col = col;
-                        
-                        const piece = this.board[row][col];
-                        if (piece) {
-                            square.innerHTML = `<span class="piece">${piece}</span>`;
-                        }
-
-                        square.addEventListener('click', (e) => this.handleSquareClick(e));
-                        board.appendChild(square);
-                    }
+        // Animation smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 }
-            }
-
-            handleSquareClick(event) {
-                if (!this.gameActive) return;
-
-                const square = event.currentTarget;
-                const row = parseInt(square.dataset.row);
-                const col = parseInt(square.dataset.col);
-                const piece = this.board[row][col];
-
-                // Désélectionner les cases précédentes
-                document.querySelectorAll('.square').forEach(s => {
-                    s.classList.remove('selected', 'possible-move');
-                });
-
-                if (this.selectedSquare) {
-                    const [selectedRow, selectedCol] = this.selectedSquare;
-                    
-                    // Tentative de mouvement
-                    if (this.isValidMove(selectedRow, selectedCol, row, col)) {
-                        this.makeMove(selectedRow, selectedCol, row, col);
-                        this.selectedSquare = null;
-                        this.switchPlayer();
-                        return;
-                    }
-                    
-                    this.selectedSquare = null;
-                }
-
-                // Sélection d'une nouvelle pièce
-                if (piece && this.isPieceOfCurrentPlayer(piece)) {
-                    square.classList.add('selected');
-                    this.selectedSquare = [row, col];
-                    this.highlightPossibleMoves(row, col);
-                }
-            }
-
-            isPieceOfCurrentPlayer(piece) {
-                const whitePieces = '♔♕♖♗♘♙';
-                const blackPieces = '♚♛♜♝♞♟';
-                
-                if (this.currentPlayer === 'white') {
-                    return whitePieces.includes(piece);
-                } else {
-                    return blackPieces.includes(piece);
-                }
-            }
-
-            isValidMove(fromRow, fromCol, toRow, toCol) {
-                // Vérification basique (simplifiée pour la démo)
-                if (toRow < 0 || toRow > 7 || toCol < 0 || toCol > 7) return false;
-                if (fromRow === toRow && fromCol === toCol) return false;
-                
-                const targetPiece = this.board[toRow][toCol];
-                if (targetPiece && this.isPieceOfCurrentPlayer(targetPiece)) return false;
-
-                // Logique de mouvement simplifiée
-                const piece = this.board[fromRow][fromCol];
-                const rowDiff = Math.abs(toRow - fromRow);
-                const colDiff = Math.abs(toCol - fromCol);
-
-                // Pions
-                if (piece === '♙' || piece === '♟') {
-                    const direction = piece === '♙' ? -1 : 1;
-                    const startRow = piece === '♙' ? 6 : 1;
-                    
-                    if (toCol === fromCol) { // Mouvement vers l'avant
-                        if (toRow === fromRow + direction && !targetPiece) return true;
-                        if (fromRow === startRow && toRow === fromRow + 2 * direction && !targetPiece) return true;
-                    } else if (Math.abs(toCol - fromCol) === 1 && toRow === fromRow + direction) {
-                        return targetPiece !== ''; // Capture en diagonale
-                    }
-                    return false;
-                }
-
-                // Autres pièces - règles simplifiées
-                if (piece === '♖' || piece === '♜') { // Tour
-                    return (rowDiff === 0 || colDiff === 0) && this.isPathClear(fromRow, fromCol, toRow, toCol);
-                }
-                
-                if (piece === '♗' || piece === '♝') { // Fou
-                    return rowDiff === colDiff && this.isPathClear(fromRow, fromCol, toRow, toCol);
-                }
-                
-                if (piece === '♕' || piece === '♛') { // Dame
-                    return ((rowDiff === 0 || colDiff === 0) || (rowDiff === colDiff)) && this.isPathClear(fromRow, fromCol, toRow, toCol);
-                }
-                
-                if (piece === '♘' || piece === '♞') { // Cavalier
-                    return (rowDiff === 2 && colDiff === 1) || (rowDiff === 1 && colDiff === 2);
-                }
-                
-                if (piece === '♔' || piece === '♚') { // Roi
-                    return rowDiff <= 1 && colDiff <= 1;
-                }
-
-                return false;
-            }
-
-            isPathClear(fromRow, fromCol, toRow, toCol) {
-                const rowStep = toRow === fromRow ? 0 : (toRow - fromRow) / Math.abs(toRow - fromRow);
-                const colStep = toCol === fromCol ? 0 : (toCol - fromCol) / Math.abs(toCol - fromCol);
-                
-                let currentRow = fromRow + rowStep;
-                let currentCol = fromCol + colStep;
-                
-                while (currentRow !== toRow || currentCol !== toCol) {
-                    if (this.board[currentRow][currentCol] !== '') return false;
-                    currentRow += rowStep;
-                    currentCol += colStep;
-                }
-                
-                return true;
-            }
-
-            highlightPossibleMoves(row, col) {
-                // Highlighter quelques mouvements possibles (simplifié)
-                for (let r = 0; r < 8; r++) {
-                    for (let c = 0; c < 8; c++) {
-                        if (this.isValidMove(row, col, r, c)) {
-                            const square = document.querySelector(`[data-row="${r}"][data-col="${c}"]`);
-                            square.classList.add('possible-move');
-                        }
-                    }
-                }
-            }
-
-            makeMove(fromRow, fromCol, toRow, toCol) {
-                const piece = this.board[fromRow][fromCol];
-                const capturedPiece = this.board[toRow][toCol];
-                
-                this.board[toRow][toCol] = piece;
-                this.board[fromRow][fromCol] = '';
-                
-                // Mise à jour de l'interface
-                const fromSquare = document.querySelector(`[data-row="${fromRow}"][data-col="${fromCol}"]`);
-                const toSquare = document.querySelector(`[data-row="${toRow}"][data-col="${toCol}"]`);
-                
-                fromSquare.innerHTML = '';
-                toSquare.innerHTML = `<span class="piece">${piece}</span>`;
-                
-                // Ajouter le mouvement à l'historique
-                const moveNotation = this.getMoveNotation(fromRow, fromCol, toRow, toCol, piece, capturedPiece);
-                this.moveHistory.push(moveNotation);
-                this.updateMovesHistory();
-            }
-
-            getMoveNotation(fromRow, fromCol, toRow, toCol, piece, captured) {
-                const files = 'abcdefgh';
-                const fromSquare = files[fromCol] + (8 - fromRow);
-                const toSquare = files[toCol] + (8 - toRow);
-                const captureSymbol = captured ? 'x' : '-';
-                
-                return `${piece}${fromSquare}${captureSymbol}${toSquare}`;
-            }
-
-            updateMovesHistory() {
-                const historyDiv = document.getElementById('movesHistory');
-                const moveCount = Math.ceil(this.moveHistory.length / 2);
-                const lastMove = this.moveHistory[this.moveHistory.length - 1];
-                
-                if (this.moveHistory.length % 2 === 1) {
-                    const moveItem = document.createElement('div');
-                    moveItem.className = 'move-item';
-                    moveItem.textContent = `${moveCount}. ${lastMove}`;
-                    historyDiv.appendChild(moveItem);
-                } else {
-                    const lastMoveItem = historyDiv.lastElementChild;
-                    lastMoveItem.textContent += ` ${lastMove}`;
-                }
-                
-                historyDiv.scrollTop = historyDiv.scrollHeight;
-            }
-
-            switchPlayer() {
-                this.currentPlayer = this.currentPlayer === 'white' ? 'black' : 'white';
-                
-                // Mise à jour de l'interface
-                const whitePlayer = document.getElementById('whitePlayer');
-                const blackPlayer = document.getElementById('blackPlayer');
-                
-                if (this.currentPlayer === 'white') {
-                    whitePlayer.classList.add('active');
-                    blackPlayer.classList.remove('active');
-                } else {
-                    blackPlayer.classList.add('active');
-                    whitePlayer.classList.remove('active');
-                }
-            }
-
-            startTimer() {
-                this.timer = setInterval(() => {
-                    if (this.currentPlayer === 'white') {
-                        this.whiteTime--;
-                    } else {
-                        this.blackTime--;
-                    }
-                    
-                    this.updateTimerDisplay();
-                    
-                    if (this.whiteTime <= 0 || this.blackTime <= 0) {
-                        this.endGame(this.whiteTime <= 0 ? 'black' : 'white');
-                    }
-                }, 1000);
-            }
-
-            updateTimerDisplay() {
-                const whiteTimer = document.getElementById('whiteTimer');
-                const blackTimer = document.getElementById('blackTimer');
-                
-                whiteTimer.textContent = this.formatTime(this.whiteTime);
-                blackTimer.textContent = this.formatTime(this.blackTime);
-            }
-
-            formatTime(seconds) {
-                const minutes = Math.floor(seconds / 60);
-                const secs = seconds % 60;
-                return `${minutes}:${secs.toString().padStart(2, '0')}`;
-            }
-
-            endGame(winner) {
-                this.gameActive = false;
-                clearInterval(this.timer);
-                
-                const modal = document.getElementById('gameModal');
-                const modalTitle = document.getElementById('modalTitle');
-                const modalMessage = document.getElementById('modalMessage');
-                
-                modalTitle.textContent = 'Partie Terminée !';
-                modalMessage.textContent = `Les ${winner === 'white' ? 'Blancs' : 'Noirs'} ont gagné !`;
-                
-                modal.style.display = 'flex';
-            }
-        }
-
-        // Instance du jeu
-        let game;
-
-        // Fonctions globales
-        function startNewGame() {
-            if (game && game.timer) {
-                clearInterval(game.timer);
-            }
-            game = new ChessGame();
-        }
-
-        function resetBoard() {
-            if (confirm('Êtes-vous sûr de vouloir réinitialiser la partie ?')) {
-                startNewGame();
-            }
-        }
-
-        function closeModal() {
-            document.getElementById('gameModal').style.display = 'none';
-        }
-
-        // Initialisation
-        document.addEventListener('DOMContentLoaded', () => {
-            startNewGame();
+            });
         });
 
-        // Gestion du modal
-        window.addEventListener('click', (event) => {
-            const modal = document.getElementById('gameModal');
-            if (event.target === modal) {
-                closeModal();
-            }
+        // Animation d'apparition des éléments
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observer les cartes d'actualités
+        document.querySelectorAll('.news-card, .featured-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
         });
+
+        // Animation du header au scroll
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            const nav = document.querySelector('.nav');
+            
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                nav.style.transform = 'translateY(-100%)';
+            } else {
+                nav.style.transform = 'translateY(0)';
+            }
+            
+            nav.style.transition = 'transform 0.3s ease';
+            lastScroll = currentScroll;
+        });
+
+        // Effet de typing sur le titre principal (optionnel)
+        const title = document.querySelector('.logo');
+        if (title) {
+            title.style.opacity = '0';
+            setTimeout(() => {
+                title.style.opacity = '1';
+                title.style.animation = 'fadeInUp 1s ease forwards';
+            }, 500);
+        }
+
+        // CSS pour l'animation fadeInUp
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
 </html>
