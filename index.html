@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kamasutra Moderne - L'Art de l'Intimité</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>Boulangerie Breizh - Tradition et Saveurs Authentiques</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -13,11 +13,22 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --primary-color: #8B4513;
+            --secondary-color: #D2B48C;
+            --accent-color: #FF6B35;
+            --text-dark: #2C1810;
+            --text-light: #5D4037;
+            --cream: #FFF8DC;
+            --white: #FFFFFF;
+            --gold: #FFD700;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
-            color: #2c2c2c;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--text-dark);
+            background-color: var(--cream);
         }
 
         .container {
@@ -28,29 +39,40 @@
 
         /* Header */
         header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: 1rem 0;
             position: fixed;
-            top: 0;
             width: 100%;
+            top: 0;
             z-index: 1000;
+            backdrop-filter: blur(10px);
             box-shadow: 0 2px 20px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
         }
 
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 0;
         }
 
         .logo {
             font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: 700;
-            color: #d63384;
-            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--gold);
+            animation: rotate 4s ease-in-out infinite;
+        }
+
+        @keyframes rotate {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(10deg); }
         }
 
         .nav-links {
@@ -60,22 +82,38 @@
         }
 
         .nav-links a {
+            color: var(--white);
             text-decoration: none;
-            color: #2c2c2c;
             font-weight: 500;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            position: relative;
         }
 
-        .nav-links a:hover {
-            color: #d63384;
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
         /* Hero Section */
         .hero {
+            background: linear-gradient(rgba(139, 69, 19, 0.7), rgba(210, 180, 140, 0.7)), 
+                        radial-gradient(circle at 30% 50%, var(--accent-color) 0%, transparent 50%),
+                        linear-gradient(45deg, var(--secondary-color) 0%, var(--primary-color) 100%);
             height: 100vh;
             display: flex;
             align-items: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            text-align: center;
+            color: var(--white);
             position: relative;
             overflow: hidden;
         }
@@ -87,53 +125,66 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="30" r="3" fill="rgba(255,255,255,0.05)"/><circle cx="40" cy="70" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="%23FFD700" opacity="0.3"><animate attributeName="opacity" values="0.3;0.8;0.3" dur="3s" repeatCount="indefinite"/></circle><circle cx="80" cy="30" r="1.5" fill="%23FFD700" opacity="0.4"><animate attributeName="opacity" values="0.4;0.9;0.4" dur="4s" repeatCount="indefinite"/></circle><circle cx="60" cy="70" r="1" fill="%23FFD700" opacity="0.5"><animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/></circle></svg>') repeat;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
         }
 
         .hero-content {
-            text-align: center;
-            color: white;
-            z-index: 2;
             position: relative;
+            z-index: 2;
         }
 
         .hero h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            font-weight: 300;
+            font-size: 4rem;
             margin-bottom: 1rem;
-            opacity: 0;
-            animation: fadeInUp 1s ease forwards 0.5s;
+            animation: fadeInUp 1s ease;
         }
 
-        .hero p {
-            font-size: 1.3rem;
+        .hero .subtitle {
+            font-size: 1.5rem;
             margin-bottom: 2rem;
-            opacity: 0;
-            animation: fadeInUp 1s ease forwards 0.7s;
+            opacity: 0.9;
+            animation: fadeInUp 1s 0.3s both;
         }
 
         .cta-button {
             display: inline-block;
-            padding: 1rem 2.5rem;
-            background: linear-gradient(45deg, #ff6b6b, #ee5a6f);
-            color: white;
+            background: linear-gradient(45deg, var(--accent-color), #FF8A65);
+            color: var(--white);
+            padding: 15px 40px;
             text-decoration: none;
             border-radius: 50px;
             font-weight: 600;
             transition: all 0.3s ease;
-            opacity: 0;
-            animation: fadeInUp 1s ease forwards 0.9s;
+            box-shadow: 0 5px 20px rgba(255, 107, 53, 0.3);
+            animation: fadeInUp 1s 0.6s both;
         }
 
         .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(238, 90, 111, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.4);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Sections */
-        .section {
-            padding: 5rem 0;
+        section {
+            padding: 80px 0;
         }
 
         .section-title {
@@ -141,12 +192,94 @@
             font-size: 2.5rem;
             text-align: center;
             margin-bottom: 3rem;
-            color: #2c2c2c;
+            color: var(--primary-color);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--accent-color);
+        }
+
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, var(--secondary-color) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .product-card:hover::before {
+            opacity: 0.1;
+        }
+
+        .product-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-color), #FF8A65);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: var(--white);
+            position: relative;
+            z-index: 2;
+        }
+
+        .product-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            position: relative;
+            z-index: 2;
+        }
+
+        .product-card p {
+            color: var(--text-light);
+            position: relative;
+            z-index: 2;
         }
 
         /* About Section */
         .about {
-            background: white;
+            background: var(--white);
         }
 
         .about-content {
@@ -159,149 +292,87 @@
         .about-text {
             font-size: 1.1rem;
             line-height: 1.8;
+            color: var(--text-light);
         }
 
-        .about-visual {
+        .about-image {
             height: 400px;
-            background: linear-gradient(45deg, #ff9a9e, #fecfef, #fecfef);
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
             border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 4rem;
+            color: var(--white);
             position: relative;
             overflow: hidden;
         }
 
-        .about-visual::before {
-            content: '\f004';
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            font-size: 4rem;
-            color: rgba(255, 255, 255, 0.3);
+        .about-image::before {
+            content: '';
             position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--gold) 0%, transparent 70%);
+            opacity: 0.3;
         }
 
-        /* Benefits Section */
-        .benefits {
-            background: #f8f9fa;
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
         }
 
-        .benefits-grid {
+        .contact-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
             gap: 2rem;
-            margin-top: 3rem;
         }
 
-        .benefit-card {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 15px;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.1rem;
         }
 
-        .benefit-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-        }
-
-        .benefit-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 1.5rem;
+        .contact-item i {
+            width: 40px;
+            height: 40px;
+            background: var(--accent-color);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
-            color: white;
         }
 
-        .benefit-icon.intimacy {
-            background: linear-gradient(135deg, #667eea, #764ba2);
+        .hours {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
         }
 
-        .benefit-icon.communication {
-            background: linear-gradient(135deg, #f093fb, #f5576c);
-        }
-
-        .benefit-icon.wellness {
-            background: linear-gradient(135deg, #4facfe, #00f2fe);
-        }
-
-        .benefit-card h3 {
+        .hours h3 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
             margin-bottom: 1rem;
-            color: #2c2c2c;
-        }
-
-        /* Philosophy Section */
-        .philosophy {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-
-        .philosophy-content {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .philosophy-content p {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
         }
 
         /* Footer */
         footer {
-            background: #2c2c2c;
-            color: white;
+            background: var(--text-dark);
+            color: var(--white);
             text-align: center;
-            padding: 3rem 0;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-section h3 {
-            font-family: 'Playfair Display', serif;
-            margin-bottom: 1rem;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-        }
-
-        .social-links a {
-            color: white;
-            font-size: 1.5rem;
-            transition: color 0.3s ease;
-        }
-
-        .social-links a:hover {
-            color: #d63384;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            padding: 2rem 0;
         }
 
         /* Responsive Design */
@@ -314,11 +385,12 @@
                 font-size: 2.5rem;
             }
 
-            .hero p {
-                font-size: 1.1rem;
+            .hero .subtitle {
+                font-size: 1.2rem;
             }
 
-            .about-content {
+            .about-content,
+            .contact-content {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
@@ -326,127 +398,172 @@
             .section-title {
                 font-size: 2rem;
             }
-
-            .benefits-grid {
-                grid-template-columns: 1fr;
-            }
         }
 
-        @media (max-width: 480px) {
-            .container {
-                padding: 0 15px;
-            }
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
 
-            .hero {
-                padding: 0 20px;
-            }
-
-            .benefit-card {
-                padding: 2rem;
-            }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
     <header>
         <nav class="container">
-            <a href="#" class="logo">Kamasutra Moderne</a>
+            <div class="logo">
+                <i class="fas fa-wheat-awn"></i>
+                Boulangerie Breizh
+            </div>
             <ul class="nav-links">
-                <li><a href="#about">À propos</a></li>
-                <li><a href="#benefits">Bienfaits</a></li>
-                <li><a href="#philosophy">Philosophie</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#accueil"><i class="fas fa-home"></i> Accueil</a></li>
+                <li><a href="#produits"><i class="fas fa-bread-slice"></i> Produits</a></li>
+                <li><a href="#apropos"><i class="fas fa-heart"></i> À propos</a></li>
+                <li><a href="#contact"><i class="fas fa-map-marker-alt"></i> Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="hero">
+    <section id="accueil" class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>L'Art de l'Intimité</h1>
-                <p>Redécouvrez la beauté et la profondeur des relations intimes à travers une approche moderne du Kamasutra</p>
-                <a href="#about" class="cta-button">Découvrir</a>
+                <h1>Boulangerie Breizh</h1>
+                <p class="subtitle">Tradition bretonne et savoir-faire artisanal depuis 1952</p>
+                <a href="#produits" class="cta-button">
+                    <i class="fas fa-bread-slice"></i> Découvrir nos spécialités
+                </a>
             </div>
         </div>
     </section>
 
-    <section id="about" class="section about">
+    <section id="produits">
         <div class="container">
-            <h2 class="section-title">Une Sagesse Millénaire</h2>
+            <h2 class="section-title fade-in">Nos Spécialités Bretonnes</h2>
+            <div class="products-grid">
+                <div class="product-card fade-in">
+                    <div class="product-icon">
+                        <i class="fas fa-bread-slice"></i>
+                    </div>
+                    <h3>Pain de Campagne</h3>
+                    <p>Notre pain signature au levain naturel, pétri à la main selon la tradition bretonne. Croûte dorée et mie moelleuse pour un goût authentique.</p>
+                </div>
+                <div class="product-card fade-in">
+                    <div class="product-icon">
+                        <i class="fas fa-cookie-bite"></i>
+                    </div>
+                    <h3>Kouign-Amann</h3>
+                    <p>La pâtisserie emblématique de Bretagne, feuilletée et caramélisée à la perfection. Un délice sucré qui fond dans la bouche.</p>
+                </div>
+                <div class="product-card fade-in">
+                    <div class="product-icon">
+                        <i class="fas fa-birthday-cake"></i>
+                    </div>
+                    <h3>Far Breton</h3>
+                    <p>Notre far traditionnel aux pruneaux, moelleux et parfumé. Une recette familiale transmise de génération en génération.</p>
+                </div>
+                <div class="product-card fade-in">
+                    <div class="product-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Pain au Sarrasin</h3>
+                    <p>Pain complet au sarrasin breton, riche en saveurs et bienfaits. Parfait pour accompagner galettes et fromages locaux.</p>
+                </div>
+                <div class="product-card fade-in">
+                    <div class="product-icon">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    <h3>Viennoiseries</h3>
+                    <p>Croissants dorés, pains au chocolat et chaussons aux pommes, préparés chaque matin avec du beurre breton de qualité.</p>
+                </div>
+                <div class="product-card fade-in">
+                    <div class="product-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Gâteaux Bretons</h3>
+                    <p>Sablés bretons, palets de dame et caramels au beurre salé. Des douceurs qui célèbrent les saveurs de notre région.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="apropos" class="about">
+        <div class="container">
+            <h2 class="section-title fade-in">Notre Histoire</h2>
             <div class="about-content">
-                <div class="about-text">
-                    <p>Le Kamasutra, bien plus qu'un simple manuel, représente une philosophie de vie qui célèbre l'amour, l'intimité et la connexion humaine. Cette sagesse ancienne nous enseigne l'art de vivre pleinement nos relations.</p>
-                    <p>Notre approche moderne respecte les enseignements traditionnels tout en les adaptant aux réalités contemporaines, offrant un chemin vers une intimité plus profonde et épanouissante.</p>
-                    <p>Découvrez comment cette sagesse millénaire peut enrichir votre vie relationnelle et personnelle dans le monde d'aujourd'hui.</p>
+                <div class="about-text fade-in">
+                    <p>Depuis 1952, la Boulangerie Breizh perpétue la tradition boulangère bretonne au cœur de notre belle région. Fondée par Yann et Marie Le Goff, notre boulangerie familiale a traversé trois générations en conservant les recettes ancestrales et le savoir-faire artisanal.</p>
+                    
+                    <p>Nous sélectionnons avec soin nos ingrédients : farine de blé noir local, beurre breton AOP, sel de Guérande et fruits de nos producteurs régionaux. Chaque produit est façonné à la main dans le respect des traditions et cuit dans notre four à bois centenaire.</p>
+                    
+                    <p>Notre passion pour l'excellence et l'authenticité nous guide chaque jour pour vous offrir le meilleur de la boulangerie bretonne. Venez découvrir nos spécialités et partager un moment convivial dans notre boutique chaleureuse.</p>
                 </div>
-                <div class="about-visual"></div>
-            </div>
-        </div>
-    </section>
-
-    <section id="benefits" class="section benefits">
-        <div class="container">
-            <h2 class="section-title">Les Bienfaits de cette Pratique</h2>
-            <div class="benefits-grid">
-                <div class="benefit-card">
-                    <div class="benefit-icon intimacy">
-                        <i class="fas fa-heart"></i>
-                    </div>
-                    <h3>Intimité Profonde</h3>
-                    <p>Développez une connexion plus authentique et profonde avec votre partenaire à travers une compréhension mutuelle renforcée.</p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon communication">
-                        <i class="fas fa-comments"></i>
-                    </div>
-                    <h3>Communication Épanouie</h3>
-                    <p>Apprenez à exprimer vos désirs et besoins de manière respectueuse, créant un dialogue ouvert et bienveillant.</p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon wellness">
-                        <i class="fas fa-spa"></i>
-                    </div>
-                    <h3>Bien-être Global</h3>
-                    <p>Cultivez un équilibre entre corps, esprit et émotions pour une vie relationnelle et personnelle épanouie.</p>
+                <div class="about-image fade-in">
+                    <i class="fas fa-wheat-awn"></i>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="philosophy" class="section philosophy">
+    <section id="contact" class="contact">
         <div class="container">
-            <div class="philosophy-content">
-                <h2 class="section-title" style="color: white;">Notre Philosophie</h2>
-                <p>Nous croyons que l'intimité véritable naît de la compréhension, du respect mutuel et de l'acceptation de soi et de l'autre.</p>
-                <p>Le Kamasutra moderne n'est pas seulement une exploration physique, mais un voyage vers une connexion spirituelle et émotionnelle profonde.</p>
-                <p>Cette approche holistique de l'amour et de l'intimité nous invite à célébrer la beauté des relations humaines dans toute leur complexité.</p>
+            <h2 class="section-title fade-in" style="color: var(--white);">Nous Trouver</h2>
+            <div class="contact-content">
+                <div class="contact-info fade-in">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong>Adresse</strong><br>
+                            42 Rue de la Marine<br>
+                            29200 Brest, Bretagne
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <strong>Téléphone</strong><br>
+                            02 98 44 55 66
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <strong>Email</strong><br>
+                            contact@boulangerie-breizh.fr
+                        </div>
+                    </div>
+                </div>
+                <div class="hours fade-in">
+                    <h3><i class="fas fa-clock"></i> Horaires d'ouverture</h3>
+                    <div style="display: grid; gap: 0.5rem; margin-top: 1rem;">
+                        <div><strong>Lundi - Vendredi:</strong> 6h30 - 19h30</div>
+                        <div><strong>Samedi:</strong> 6h30 - 20h00</div>
+                        <div><strong>Dimanche:</strong> 7h00 - 13h00</div>
+                        <div style="margin-top: 1rem; font-style: italic; opacity: 0.8;">
+                            <i class="fas fa-info-circle"></i> Fermé le mercredi après-midi
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <footer id="contact">
+    <footer>
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Contact</h3>
-                    <p>Pour plus d'informations sur nos approches et enseignements</p>
-                    <p><i class="fas fa-envelope"></i> contact@kamasutra-moderne.fr</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Suivez-nous</h3>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-            </div>
-            <p>&copy; 2024 Kamasutra Moderne. Tous droits réservés.</p>
+            <p>&copy; 2024 Boulangerie Breizh - Tradition et Authenticité Bretonne</p>
+            <p style="margin-top: 0.5rem; opacity: 0.8;">
+                <i class="fas fa-heart" style="color: var(--accent-color);"></i> 
+                Fait avec passion en Bretagne
+            </p>
         </div>
     </footer>
 
     <script>
-        // Smooth scrolling
+        // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -460,17 +577,7 @@
             });
         });
 
-        // Header scroll effect
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(255, 255, 255, 0.98)';
-            } else {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-            }
-        });
-
-        // Intersection Observer for animations
+        // Scroll animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -479,18 +586,33 @@
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.classList.add('visible');
                 }
             });
         }, observerOptions);
 
-        // Observe benefit cards
-        document.querySelectorAll('.benefit-card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(30px)';
-            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(card);
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Header transparency on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'linear-gradient(135deg, rgba(139, 69, 19, 0.95) 0%, rgba(210, 180, 140, 0.95) 100%)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%)';
+            }
+        });
+
+        // Add loading animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
         });
     </script>
 </body>
