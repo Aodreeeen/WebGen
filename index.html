@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Les Saucisses de France - Terroir & Tradition</title>
+    <title>Écrans et Manipulation - Réveillez-vous</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,54 +13,44 @@
             box-sizing: border-box;
         }
 
-        :root {
-            --primary-color: #8B4513;
-            --secondary-color: #D2691E;
-            --accent-color: #CD853F;
-            --light-color: #F5F5DC;
-            --dark-color: #2F1B14;
-            --text-light: #666;
-            --white: #ffffff;
-        }
-
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            color: #e94560;
             line-height: 1.6;
-            color: var(--dark-color);
             overflow-x: hidden;
         }
 
-        h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
         /* Header */
         header {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: var(--white);
-            padding: 1rem 0;
+            background: rgba(15, 15, 35, 0.95);
+            backdrop-filter: blur(10px);
             position: fixed;
-            width: 100%;
             top: 0;
+            width: 100%;
             z-index: 1000;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            border-bottom: 2px solid #e94560;
         }
 
         nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 1rem 0;
         }
 
         .logo {
+            font-family: 'Orbitron', monospace;
             font-size: 1.8rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            font-weight: 900;
+            color: #00ff41;
+            text-shadow: 0 0 10px #00ff41;
         }
 
         .nav-links {
@@ -70,7 +60,7 @@
         }
 
         .nav-links a {
-            color: var(--white);
+            color: #e94560;
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s ease;
@@ -78,7 +68,7 @@
         }
 
         .nav-links a:hover {
-            color: var(--light-color);
+            color: #00ff41;
             transform: translateY(-2px);
         }
 
@@ -89,7 +79,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--light-color);
+            background: #00ff41;
             transition: width 0.3s ease;
         }
 
@@ -100,7 +90,6 @@
         /* Hero Section */
         .hero {
             height: 100vh;
-            background: linear-gradient(135deg, var(--light-color) 0%, #FAF0E6 100%);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -116,241 +105,244 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="%23CD853F" opacity="0.1"/><circle cx="80" cy="80" r="3" fill="%23D2691E" opacity="0.1"/><circle cx="60" cy="30" r="1.5" fill="%238B4513" opacity="0.1"/></svg>') repeat;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(233, 69, 96, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 255, 65, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(233, 69, 96, 0.2) 0%, transparent 50%);
+            animation: pulse 4s ease-in-out infinite;
         }
 
         .hero-content {
-            max-width: 800px;
             z-index: 2;
             position: relative;
         }
 
         .hero h1 {
-            font-size: clamp(3rem, 8vw, 5rem);
+            font-family: 'Orbitron', monospace;
+            font-size: 3.5rem;
             margin-bottom: 1rem;
-            color: var(--primary-color);
-            animation: fadeInUp 1s ease-out;
+            background: linear-gradient(45deg, #e94560, #00ff41);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(233, 69, 96, 0.5);
+            animation: glow 2s ease-in-out infinite alternate;
         }
 
         .hero p {
             font-size: 1.3rem;
-            color: var(--text-light);
             margin-bottom: 2rem;
-            animation: fadeInUp 1s ease-out 0.3s both;
+            color: #ffffff;
+            opacity: 0.9;
         }
 
-        .hero-visual {
-            width: 200px;
-            height: 200px;
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--accent-color));
-            border-radius: 50%;
-            margin: 2rem auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 20px 40px rgba(139, 69, 19, 0.3);
-            animation: float 3s ease-in-out infinite;
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, #e94560, #00ff41);
+            color: #0f0f23;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(233, 69, 96, 0.3);
         }
 
-        .hero-visual i {
-            font-size: 4rem;
-            color: var(--white);
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(233, 69, 96, 0.5);
         }
 
-        /* Section Styles */
-        .section {
+        /* Sections */
+        section {
             padding: 5rem 0;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding-left: 2rem;
-            padding-right: 2rem;
         }
 
         .section-title {
-            text-align: center;
+            font-family: 'Orbitron', monospace;
             font-size: 2.5rem;
-            color: var(--primary-color);
+            text-align: center;
             margin-bottom: 3rem;
-            position: relative;
+            color: #00ff41;
+            text-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
         }
 
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
-        }
-
-        /* Regions Grid */
-        .regions-grid {
+        /* Evidence Grid */
+        .evidence-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
         }
 
-        .region-card {
-            background: var(--white);
-            border-radius: 15px;
+        .evidence-card {
+            background: rgba(26, 26, 46, 0.8);
             padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-
-        .region-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-            border-color: var(--accent-color);
-        }
-
-        .region-visual {
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
             border-radius: 15px;
-            margin: 0 auto 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 5px 15px rgba(210, 105, 30, 0.3);
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+            transition: all 0.3s ease;
+            overflow: hidden;
         }
 
-        .region-visual i {
-            font-size: 2.5rem;
-            color: var(--white);
+        .evidence-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, #e94560, #00ff41);
+            z-index: -1;
+            transform: scale(1.02);
+            border-radius: 15px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
-        .region-card h3 {
-            font-size: 1.5rem;
-            color: var(--primary-color);
+        .evidence-card:hover::before {
+            opacity: 1;
+        }
+
+        .evidence-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(233, 69, 96, 0.3);
+        }
+
+        .evidence-icon {
+            font-size: 3rem;
+            color: #e94560;
             margin-bottom: 1rem;
+            display: block;
             text-align: center;
         }
 
-        .region-card p {
-            color: var(--text-light);
+        .evidence-card h3 {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #00ff41;
+        }
+
+        /* Warning Banner */
+        .warning-banner {
+            background: linear-gradient(45deg, #e94560, #ff6b6b);
+            color: white;
             text-align: center;
-            line-height: 1.6;
+            padding: 2rem;
+            margin: 3rem 0;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
         }
 
-        /* Features Section */
-        .features {
-            background: linear-gradient(135deg, var(--light-color) 0%, #FAF0E6 100%);
-            padding: 5rem 2rem;
+        .warning-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255, 255, 255, 0.1) 10px,
+                rgba(255, 255, 255, 0.1) 20px
+            );
+            animation: slide 3s linear infinite;
         }
 
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
+        .warning-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .warning-banner h2 {
+            font-family: 'Orbitron', monospace;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Truth Seeker Form */
+        .truth-form {
+            background: rgba(26, 26, 46, 0.9);
+            padding: 3rem;
+            border-radius: 15px;
+            border: 2px solid #e94560;
+            max-width: 600px;
             margin: 0 auto;
         }
 
-        .feature-item {
-            text-align: center;
-            padding: 1.5rem;
+        .form-group {
+            margin-bottom: 1.5rem;
         }
 
-        .feature-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            border-radius: 50%;
-            margin: 0 auto 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 5px 15px rgba(139, 69, 19, 0.3);
-            transition: all 0.3s ease;
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #00ff41;
+            font-weight: 500;
         }
 
-        .feature-item:hover .feature-icon {
-            transform: scale(1.1) rotate(5deg);
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            background: rgba(15, 15, 35, 0.8);
+            border: 2px solid #e94560;
+            border-radius: 8px;
+            color: white;
+            font-family: inherit;
         }
 
-        .feature-icon i {
-            font-size: 1.8rem;
-            color: var(--white);
-        }
-
-        .feature-item h3 {
-            font-size: 1.3rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-
-        .feature-item p {
-            color: var(--text-light);
-        }
-
-        /* CTA Section */
-        .cta {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: var(--white);
-            text-align: center;
-            padding: 4rem 2rem;
-        }
-
-        .cta h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .cta p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        .btn {
-            background: var(--white);
-            color: var(--primary-color);
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-            background: var(--light-color);
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #00ff41;
+            box-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
         }
 
         /* Footer */
         footer {
-            background: var(--dark-color);
-            color: var(--white);
+            background: rgba(15, 15, 35, 0.95);
             text-align: center;
-            padding: 2rem;
+            padding: 2rem 0;
+            border-top: 2px solid #e94560;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-links a {
+            color: #e94560;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #00ff41;
+            transform: scale(1.2);
         }
 
         /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 0.8; }
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+        @keyframes glow {
+            0% { text-shadow: 0 0 20px rgba(233, 69, 96, 0.5); }
+            100% { text-shadow: 0 0 30px rgba(0, 255, 65, 0.7), 0 0 40px rgba(233, 69, 96, 0.5); }
+        }
+
+        @keyframes slide {
+            0% { transform: translateX(-50px); }
+            100% { transform: translateX(50px); }
         }
 
         /* Responsive */
@@ -359,17 +351,11 @@
                 display: none;
             }
 
-            .hero {
-                height: 80vh;
-                padding: 0 1rem;
+            .hero h1 {
+                font-size: 2.5rem;
             }
 
-            .section {
-                padding-left: 1rem;
-                padding-right: 1rem;
-            }
-
-            .regions-grid {
+            .evidence-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -377,227 +363,211 @@
                 font-size: 2rem;
             }
         }
-
-        /* Scroll behavior */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Loading animation for visuals */
-        .region-visual, .hero-visual, .feature-icon {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .region-visual::before, .hero-visual::before, .feature-icon::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
-            transform: rotate(45deg);
-            transition: all 0.5s ease;
-            opacity: 0;
-        }
-
-        .region-card:hover .region-visual::before,
-        .hero-visual:hover::before,
-        .feature-item:hover .feature-icon::before {
-            opacity: 1;
-            transform: translateX(100%) translateY(100%) rotate(45deg);
-        }
     </style>
 </head>
 <body>
     <header>
-        <nav>
+        <nav class="container">
             <div class="logo">
-                <i class="fas fa-drumstick-bite"></i>
-                Saucisses de France
+                <i class="fas fa-eye"></i> RÉVEIL DIGITAL
             </div>
             <ul class="nav-links">
-                <li><a href="#accueil">Accueil</a></li>
-                <li><a href="#regions">Régions</a></li>
-                <li><a href="#traditions">Traditions</a></li>
+                <li><a href="#evidence">Preuves</a></li>
+                <li><a href="#truth">Vérité</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <section id="accueil" class="hero">
-            <div class="hero-content">
-                <h1>Saucisses de France</h1>
-                <p>Découvrez l'authentique terroir français à travers ses saucisses traditionnelles</p>
-                <div class="hero-visual">
-                    <i class="fas fa-drumstick-bite"></i>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>LA MANIPULATION PAR L'ÉCRAN</h1>
+                    <p>Découvrez comment les écrans contrôlent votre esprit et votre comportement</p>
+                    <a href="#evidence" class="cta-button">
+                        <i class="fas fa-search"></i> DÉCOUVRIR LA VÉRITÉ
+                    </a>
                 </div>
             </div>
         </section>
 
-        <section id="regions" class="section">
-            <h2 class="section-title">Nos Régions d'Excellence</h2>
-            <div class="regions-grid">
-                <div class="region-card">
-                    <div class="region-visual">
-                        <i class="fas fa-mountain"></i>
+        <section id="evidence">
+            <div class="container">
+                <h2 class="section-title">LES PREUVES CACHÉES</h2>
+                
+                <div class="evidence-grid">
+                    <div class="evidence-card">
+                        <i class="fas fa-brain evidence-icon"></i>
+                        <h3>Contrôle Mental</h3>
+                        <p>Les fréquences des écrans modifient les ondes cérébrales pour influencer nos pensées et nos décisions. Des études secrètes révèlent l'utilisation de signaux subliminaux intégrés dans les pixels.</p>
                     </div>
-                    <h3>Saucisse de Toulouse</h3>
-                    <p>Originaire du Sud-Ouest, cette saucisse emblématique se caractérise par son goût authentique et sa texture généreuse. Parfaite pour le cassoulet traditionnel.</p>
-                </div>
-                <div class="region-card">
-                    <div class="region-visual">
-                        <i class="fas fa-leaf"></i>
+
+                    <div class="evidence-card">
+                        <i class="fas fa-satellite-dish evidence-icon"></i>
+                        <h3>Transmission de Données</h3>
+                        <p>Chaque écran transmet secrètement vos données biométriques via des micro-ondes invisibles. Votre rythme cardiaque, votre stress, tout est analysé en temps réel.</p>
                     </div>
-                    <h3>Saucisse de Morteau</h3>
-                    <p>Fumée au bois de résineux dans le Haut-Doubs, cette IGP offre une saveur unique et un arôme incomparable qui ravit les palais les plus exigeants.</p>
-                </div>
-                <div class="region-card">
-                    <div class="region-visual">
-                        <i class="fas fa-fire"></i>
+
+                    <div class="evidence-card">
+                        <i class="fas fa-eye-slash evidence-icon"></i>
+                        <h3>Surveillance Cachée</h3>
+                        <p>Les caméras ne sont pas le seul moyen de surveillance. Les écrans peuvent détecter vos mouvements oculaires et analyser vos réactions émotionnelles sans votre consentement.</p>
                     </div>
-                    <h3>Merguez du Maghreb</h3>
-                    <p>Adoptée par la France, cette saucisse épicée apporte une touche de soleil et de caractère à notre patrimoine culinaire avec ses épices orientales.</p>
-                </div>
-                <div class="region-card">
-                    <div class="region-visual">
-                        <i class="fas fa-wine-glass"></i>
+
+                    <div class="evidence-card">
+                        <i class="fas fa-dna evidence-icon"></i>
+                        <h3>Modification Génétique</h3>
+                        <p>L'exposition prolongée aux écrans active des séquences ADN dormantes, modifiant subtilement notre code génétique pour nous rendre plus dociles et dépendants.</p>
                     </div>
-                    <h3>Saucisse de Lyon</h3>
-                    <p>Capitale gastronomique oblige, Lyon nous offre une saucisse raffinée, parfaite pour accompagner les grands vins de la région Rhône-Alpes.</p>
+
+                    <div class="evidence-card">
+                        <i class="fas fa-network-wired evidence-icon"></i>
+                        <h3>Réseau Neural Global</h3>
+                        <p>Tous les écrans sont connectés à un réseau neural artificiel qui apprend de nos comportements pour prédire et manipuler nos futures actions.</p>
+                    </div>
+
+                    <div class="evidence-card">
+                        <i class="fas fa-radiation evidence-icon"></i>
+                        <h3>Radiations Programmées</h3>
+                        <p>Les écrans émettent des radiations spécifiques qui affectent notre système endocrinien, modifiant nos hormones et notre humeur selon des algorithmes prédéfinis.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="traditions" class="features">
-            <h2 class="section-title">Nos Traditions</h2>
-            <div class="features-grid">
-                <div class="feature-item">
-                    <div class="feature-icon">
-                        <i class="fas fa-hand-holding-heart"></i>
-                    </div>
-                    <h3>Savoir-Faire Artisanal</h3>
-                    <p>Des techniques transmises de génération en génération pour préserver l'authenticité de nos saucisses.</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">
-                        <i class="fas fa-seedling"></i>
-                    </div>
-                    <h3>Ingrédients Locaux</h3>
-                    <p>Sélection rigoureuse de viandes et d'épices issues du terroir français pour une qualité exceptionnelle.</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">
-                        <i class="fas fa-award"></i>
-                    </div>
-                    <h3>Labels de Qualité</h3>
-                    <p>IGP, AOC, et certifications qui garantissent l'origine et la qualité de nos produits traditionnels.</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <h3>Maturation Lente</h3>
-                    <p>Le temps nécessaire pour développer les arômes et obtenir la texture parfaite de chaque variété.</p>
+        <div class="container">
+            <div class="warning-banner">
+                <div class="warning-content">
+                    <h2><i class="fas fa-exclamation-triangle"></i> ALERTE ROUGE</h2>
+                    <p>Vous êtes actuellement surveillé par votre écran. Chaque seconde passée à lire ce message renforce leur contrôle sur votre esprit. Partagez cette information avant qu'il ne soit trop tard !</p>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <section id="contact" class="cta">
-            <h2>Rejoignez Notre Communauté</h2>
-            <p>Découvrez nos recettes exclusives et restez informé de nos nouveautés</p>
-            <a href="#" class="btn" onclick="showAlert()">S'abonner à la Newsletter</a>
+        <section id="truth">
+            <div class="container">
+                <h2 class="section-title">REJOIGNEZ LES ÉVEILLÉS</h2>
+                
+                <div class="truth-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name"><i class="fas fa-user"></i> Nom de Code</label>
+                            <input type="text" id="name" name="name" placeholder="Entrez votre pseudonyme...">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email"><i class="fas fa-envelope-open"></i> Email Sécurisé</label>
+                            <input type="email" id="email" name="email" placeholder="contact@email-crypte.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="experience"><i class="fas fa-comments"></i> Votre Expérience</label>
+                            <textarea id="experience" name="experience" rows="4" placeholder="Racontez-nous votre expérience avec la manipulation par écran..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="cta-button">
+                            <i class="fas fa-paper-plane"></i> REJOINDRE LA RÉSISTANCE
+                        </button>
+                    </form>
+                </div>
+            </div>
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 2024 Saucisses de France. Tous droits réservés. | <i class="fas fa-heart" style="color: #D2691E;"></i> Fait avec passion pour le terroir français</p>
+    <footer id="contact">
+        <div class="container">
+            <div class="social-links">
+                <a href="#" title="Canal Telegram"><i class="fab fa-telegram"></i></a>
+                <a href="#" title="Forum Sécurisé"><i class="fas fa-comments"></i></a>
+                <a href="#" title="Radio Underground"><i class="fas fa-broadcast-tower"></i></a>
+                <a href="#" title="Réseau Tor"><i class="fas fa-user-secret"></i></a>
+            </div>
+            <p>&copy; 2024 Réveil Digital - La vérité ne peut être cachée éternellement</p>
+            <p><small>Site crypté et protégé - Naviguez en mode incognito</small></p>
+        </div>
     </footer>
 
     <script>
-        // Smooth scroll for navigation links
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                if (this.getAttribute('href') !== '#') {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        const headerHeight = document.querySelector('header').offsetHeight;
-                        const targetPosition = target.offsetTop - headerHeight;
-                        window.scrollTo({
-                            top: targetPosition,
-                            behavior: 'smooth'
-                        });
-                    }
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 }
             });
         });
 
-        // Header scroll effect
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.backgroundColor = 'rgba(139, 69, 19, 0.95)';
-                header.style.backdropFilter = 'blur(10px)';
-            } else {
-                header.style.backgroundColor = '';
-                header.style.backdropFilter = '';
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simulate form submission
+            const button = this.querySelector('button[type="submit"]');
+            const originalText = button.innerHTML;
+            
+            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> TRANSMISSION EN COURS...';
+            button.disabled = true;
+            
+            setTimeout(() => {
+                button.innerHTML = '<i class="fas fa-check"></i> MESSAGE REÇU';
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.disabled = false;
+                    this.reset();
+                }, 2000);
+            }, 3000);
+        });
+
+        // Dynamic background effects
+        function createFloatingElements() {
+            const hero = document.querySelector('.hero');
+            
+            for (let i = 0; i < 5; i++) {
+                const element = document.createElement('div');
+                element.style.cssText = `
+                    position: absolute;
+                    width: 4px;
+                    height: 4px;
+                    background: #00ff41;
+                    border-radius: 50%;
+                    opacity: 0.7;
+                    animation: float ${3 + Math.random() * 4}s ease-in-out infinite;
+                    left: ${Math.random() * 100}%;
+                    top: ${Math.random() * 100}%;
+                    box-shadow: 0 0 10px #00ff41;
+                `;
+                hero.appendChild(element);
             }
-        });
-
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observe elements for animation
-        document.querySelectorAll('.region-card, .feature-item').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'all 0.6s ease';
-            observer.observe(el);
-        });
-
-        // Newsletter subscription alert
-        function showAlert() {
-            alert('Merci pour votre intérêt ! Cette fonctionnalité sera bientôt disponible.');
         }
 
-        // Add loading animation to page
+        // Add floating animation keyframes
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes float {
+                0%, 100% { transform: translateY(0px) scale(1); }
+                50% { transform: translateY(-20px) scale(1.2); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Initialize effects
         window.addEventListener('load', () => {
-            document.body.style.opacity = '0';
-            document.body.style.transition = 'opacity 0.5s ease';
-            setTimeout(() => {
-                document.body.style.opacity = '1';
-            }, 100);
+            createFloatingElements();
         });
 
-        // Mobile menu toggle (for future enhancement)
-        const navToggle = () => {
-            const navLinks = document.querySelector('.nav-links');
-            navLinks.classList.toggle('active');
-        };
-
-        // Add some interactive hover effects
-        document.querySelectorAll('.region-card').forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                card.style.transform = 'translateY(-10px) scale(1.02)';
-            });
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'translateY(0) scale(1)';
-            });
+        // Scroll effects
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
         });
     </script>
 </body>
