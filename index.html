@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Morpion Pro - Jeu de Tic-Tac-Toe</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Cabinet d'Avocats - Défense des Droits Étudiants</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -13,675 +13,545 @@
             box-sizing: border-box;
         }
 
-        :root {
-            --primary-color: #667eea;
-            --secondary-color: #764ba2;
-            --accent-color: #f093fb;
-            --success-color: #4ecdc4;
-            --error-color: #ff6b6b;
-            --dark-color: #2c3e50;
-            --light-color: #ecf0f1;
-            --gradient-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --card-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
-            --hover-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
-        }
-
         body {
-            font-family: 'Poppins', sans-serif;
-            background: var(--gradient-bg);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            overflow-x: hidden;
+            font-family: 'Source Sans Pro', sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
         }
 
         .container {
-            max-width: 600px;
-            width: 90%;
-            text-align: center;
-            animation: fadeInUp 0.8s ease-out;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
-        .header {
-            margin-bottom: 2rem;
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23ffffff" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="%23ffffff" opacity="0.1"/><circle cx="50" cy="10" r="1" fill="%23ffffff" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>') repeat;
+            opacity: 0.1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
         }
 
         .logo {
             width: 80px;
             height: 80px;
-            background: linear-gradient(45deg, var(--accent-color), var(--success-color));
+            margin: 0 auto 20px;
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 1rem;
-            box-shadow: var(--card-shadow);
+            font-size: 2rem;
+            color: #1e3c72;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             animation: pulse 2s infinite;
         }
 
-        .logo i {
-            font-size: 2rem;
-            color: white;
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
 
         h1 {
-            font-size: 2.5rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 20px;
             font-weight: 700;
-            margin-bottom: 0.5rem;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
 
         .subtitle {
-            font-size: 1.1rem;
+            font-size: 1.3rem;
+            margin-bottom: 30px;
             opacity: 0.9;
             font-weight: 300;
         }
 
-        .game-card {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 2rem;
-            box-shadow: var(--card-shadow);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .game-card:hover {
-            box-shadow: var(--hover-shadow);
-            transform: translateY(-5px);
-        }
-
-        .game-info {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .current-player {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 0.8rem 1.5rem;
-            border-radius: 50px;
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 30px;
             font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(231, 76, 60, 0.3);
         }
 
-        .current-player.player-x {
-            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(231, 76, 60, 0.4);
         }
 
-        .current-player.player-o {
-            background: linear-gradient(45deg, #4ecdc4, #44a08d);
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background: white;
         }
 
-        .score {
-            display: flex;
-            gap: 1rem;
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #2c3e50;
         }
 
-        .score-item {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 0.5rem 1rem;
-            border-radius: 10px;
-            font-weight: 600;
-            font-size: 0.9rem;
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #7f8c8d;
+            margin-bottom: 60px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .game-board {
+        .services-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            max-width: 300px;
-            margin: 0 auto 1.5rem;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 15px;
-            border-radius: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
         }
 
-        .cell {
+        .service-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid #f8f9fa;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
             width: 80px;
             height: 80px;
-            background: rgba(255, 255, 255, 0.9);
-            border: none;
-            border-radius: 10px;
+            margin: 0 auto 25px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-size: 2rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            color: white;
+        }
+
+        .service-card:nth-child(2) .service-icon {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .service-card:nth-child(3) .service-icon {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .service-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .service-card p {
+            color: #7f8c8d;
+            line-height: 1.8;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .contact-info h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .contact-item i {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--dark-color);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .cell:hover {
-            background: rgba(255, 255, 255, 1);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-        }
-
-        .cell:disabled {
-            cursor: not-allowed;
-            opacity: 0.8;
-        }
-
-        .cell.x {
-            color: #ff6b6b;
-        }
-
-        .cell.o {
-            color: #4ecdc4;
-        }
-
-        .cell.winning {
-            background: linear-gradient(45deg, #f093fb, #f5576c);
-            color: white;
-            animation: winningCell 0.6s ease;
-        }
-
-        .controls {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 0.8rem 2rem;
-            border: none;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            text-decoration: none;
-        }
-
-        .btn-primary {
-            background: linear-gradient(45deg, var(--accent-color), #f5576c);
-            color: white;
-            box-shadow: 0 5px 15px rgba(240, 147, 251, 0.4);
-        }
-
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-        }
-
-        .status-message {
-            margin: 1rem 0;
+            margin-right: 20px;
             font-size: 1.2rem;
+        }
+
+        .contact-form {
+            background: rgba(255,255,255,0.1);
+            padding: 40px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
             font-weight: 600;
-            min-height: 1.5rem;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.5s ease;
         }
 
-        .status-message.show {
-            opacity: 1;
-            transform: translateY(0);
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.9);
+            color: #2c3e50;
+            font-size: 1rem;
         }
 
-        .status-message.winner {
-            color: #f093fb;
-            text-shadow: 0 0 20px rgba(240, 147, 251, 0.5);
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
         }
 
-        .status-message.draw {
-            color: #ffeaa7;
-            text-shadow: 0 0 20px rgba(255, 234, 167, 0.5);
-        }
-
-        .footer {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            opacity: 0.7;
-            font-size: 0.9rem;
-        }
-
-        .difficulty {
-            margin-bottom: 1rem;
-        }
-
-        .difficulty-buttons {
-            display: flex;
-            gap: 0.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .difficulty-btn {
-            padding: 0.5rem 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            background: rgba(255, 255, 255, 0.1);
+        .submit-btn {
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
             color: white;
-            border-radius: 25px;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-size: 0.9rem;
+            width: 100%;
         }
 
-        .difficulty-btn.active {
-            background: var(--accent-color);
-            border-color: var(--accent-color);
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
         }
 
-        .difficulty-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 60px 0 30px;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 20px;
+            color: #ffd700;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #bdc3c7;
+            text-decoration: none;
+            line-height: 1.8;
+        }
+
+        .footer-section a:hover {
+            color: #ffd700;
+            transition: color 0.3s ease;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #34495e;
+            padding-top: 30px;
+            color: #95a5a6;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards;
         }
 
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+        .service-card:nth-child(1) {
+            animation-delay: 0.1s;
         }
 
-        @keyframes winningCell {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
+        .service-card:nth-child(2) {
+            animation-delay: 0.2s;
         }
 
-        @media (max-width: 768px) {
-            .container {
-                width: 95%;
-            }
-
-            h1 {
-                font-size: 2rem;
-            }
-
-            .game-card {
-                padding: 1.5rem;
-            }
-
-            .cell {
-                width: 70px;
-                height: 70px;
-                font-size: 1.8rem;
-            }
-
-            .game-info {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .controls {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .btn {
-                width: 100%;
-                max-width: 200px;
-                justify-content: center;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .cell {
-                width: 60px;
-                height: 60px;
-                font-size: 1.5rem;
-            }
-
-            .game-board {
-                max-width: 250px;
-            }
+        .service-card:nth-child(3) {
+            animation-delay: 0.3s;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <div class="logo">
-                <i class="fas fa-hashtag"></i>
-            </div>
-            <h1>Morpion Pro</h1>
-            <p class="subtitle">Jouez contre l'IA et testez vos compétences !</p>
-        </div>
-
-        <div class="game-card">
-            <div class="difficulty">
-                <div class="difficulty-buttons">
-                    <button class="difficulty-btn active" data-level="easy">
-                        <i class="fas fa-smile"></i> Facile
-                    </button>
-                    <button class="difficulty-btn" data-level="medium">
-                        <i class="fas fa-meh"></i> Moyen
-                    </button>
-                    <button class="difficulty-btn" data-level="hard">
-                        <i class="fas fa-brain"></i> Difficile
-                    </button>
+    <header>
+        <div class="container">
+            <div class="hero-content">
+                <div class="logo">
+                    <i class="fas fa-balance-scale"></i>
                 </div>
-            </div>
-
-            <div class="game-info">
-                <div class="current-player" id="currentPlayer">
-                    <i class="fas fa-times"></i>
-                    <span>Joueur X</span>
-                </div>
-                <div class="score">
-                    <div class="score-item">
-                        <i class="fas fa-user"></i> Vous: <span id="playerScore">0</span>
-                    </div>
-                    <div class="score-item">
-                        <i class="fas fa-robot"></i> IA: <span id="aiScore">0</span>
-                    </div>
-                    <div class="score-item">
-                        <i class="fas fa-handshake"></i> Nuls: <span id="drawScore">0</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="status-message" id="statusMessage"></div>
-
-            <div class="game-board" id="gameBoard">
-                <button class="cell" data-index="0"></button>
-                <button class="cell" data-index="1"></button>
-                <button class="cell" data-index="2"></button>
-                <button class="cell" data-index="3"></button>
-                <button class="cell" data-index="4"></button>
-                <button class="cell" data-index="5"></button>
-                <button class="cell" data-index="6"></button>
-                <button class="cell" data-index="7"></button>
-                <button class="cell" data-index="8"></button>
-            </div>
-
-            <div class="controls">
-                <button class="btn btn-primary" id="newGameBtn">
-                    <i class="fas fa-play"></i>
-                    Nouvelle partie
-                </button>
-                <button class="btn btn-secondary" id="resetScoreBtn">
-                    <i class="fas fa-undo"></i>
-                    Reset scores
-                </button>
+                <h1>Cabinet Juridique Spécialisé</h1>
+                <p class="subtitle">Défense des droits étudiants et actions judiciaires contre les établissements d'enseignement</p>
+                <a href="#contact" class="cta-button">
+                    <i class="fas fa-phone"></i> Consultation Gratuite
+                </a>
             </div>
         </div>
-    </div>
+    </header>
 
-    <div class="footer">
-        <p><i class="fas fa-code"></i> Morpion Pro - Jeu de Tic-Tac-Toe Intelligent</p>
-    </div>
+    <section class="services">
+        <div class="container">
+            <h2 class="section-title">Nos Domaines d'Expertise</h2>
+            <p class="section-subtitle">Nous défendons vos droits face aux pratiques abusives des établissements d'enseignement supérieur</p>
+            
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Droits Étudiants</h3>
+                    <p>Défense contre les exclusions abusives, les discriminations, et les violations des droits fondamentaux des étudiants dans l'enseignement supérieur.</p>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-euro-sign"></i>
+                    </div>
+                    <h3>Contentieux Financier</h3>
+                    <p>Récupération des frais de scolarité indûment perçus, contestation des augmentations abusives, et actions en remboursement.</p>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Protection Juridique</h3>
+                    <p>Actions collectives, recours administratifs, et représentation devant les juridictions compétentes pour faire valoir vos droits.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h2>Contactez-Nous</h2>
+                    <p style="margin-bottom: 40px;">Consultation gratuite et confidentielle. Nous étudions votre dossier et vous conseillons sur vos recours possibles.</p>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <strong>Téléphone</strong><br>
+                            01 XX XX XX XX
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <strong>Email</strong><br>
+                            contact@cabinet-juridique.fr
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong>Adresse</strong><br>
+                            123 Avenue de la Justice<br>
+                            75001 Paris
+                        </div>
+                    </div>
+                </div>
+                
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Nom complet</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Téléphone</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Décrivez votre situation</label>
+                        <textarea id="message" name="message" placeholder="Expliquez-nous les problèmes rencontrés avec votre établissement..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i> Envoyer ma demande
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Cabinet Juridique</h3>
+                    <p>Spécialisé dans la défense des droits étudiants et les contentieux avec les établissements d'enseignement supérieur.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <p><a href="#">Consultation juridique</a></p>
+                    <p><a href="#">Actions collectives</a></p>
+                    <p><a href="#">Recours administratifs</a></p>
+                    <p><a href="#">Contentieux judiciaires</a></p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Informations</h3>
+                    <p><a href="#">Mentions légales</a></p>
+                    <p><a href="#">Confidentialité</a></p>
+                    <p><a href="#">Conditions générales</a></p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Cabinet Juridique Spécialisé. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
 
     <script>
-        class MorpionGame {
-            constructor() {
-                this.board = Array(9).fill('');
-                this.currentPlayer = 'X';
-                this.gameActive = true;
-                this.difficulty = 'easy';
-                this.scores = {
-                    player: 0,
-                    ai: 0,
-                    draw: 0
-                };
-                this.winningConditions = [
-                    [0, 1, 2], [3, 4, 5], [6, 7, 8],
-                    [0, 3, 6], [1, 4, 7], [2, 5, 8],
-                    [0, 4, 8], [2, 4, 6]
-                ];
-                this.init();
-            }
-
-            init() {
-                this.bindEvents();
-                this.loadScores();
-                this.updateDisplay();
-            }
-
-            bindEvents() {
-                const cells = document.querySelectorAll('.cell');
-                cells.forEach(cell => {
-                    cell.addEventListener('click', (e) => this.handleCellClick(e));
-                });
-
-                document.getElementById('newGameBtn').addEventListener('click', () => this.newGame());
-                document.getElementById('resetScoreBtn').addEventListener('click', () => this.resetScores());
-
-                const difficultyBtns = document.querySelectorAll('.difficulty-btn');
-                difficultyBtns.forEach(btn => {
-                    btn.addEventListener('click', (e) => this.setDifficulty(e));
-                });
-            }
-
-            handleCellClick(e) {
-                const index = parseInt(e.target.getAttribute('data-index'));
-                
-                if (this.board[index] !== '' || !this.gameActive || this.currentPlayer === 'O') {
-                    return;
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 }
+            });
+        });
 
-                this.makeMove(index, 'X');
-                
-                if (this.gameActive && this.currentPlayer === 'O') {
-                    setTimeout(() => this.aiMove(), 500);
+        // Form handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simple form validation
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            if (name && email && message) {
+                alert('Merci pour votre message. Nous vous recontacterons dans les plus brefs délais.');
+                this.reset();
+            } else {
+                alert('Veuillez remplir tous les champs obligatoires.');
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
                 }
-            }
+            });
+        }, observerOptions);
 
-            makeMove(index, player) {
-                this.board[index] = player;
-                const cell = document.querySelector(`[data-index="${index}"]`);
-                cell.textContent = player;
-                cell.classList.add(player.toLowerCase());
-                cell.disabled = true;
-
-                if (this.checkWin(player)) {
-                    this.endGame(`${player === 'X' ? 'Vous avez' : 'L\'IA a'} gagné !`, 'winner');
-                    this.scores[player === 'X' ? 'player' : 'ai']++;
-                    this.highlightWinningCells();
-                } else if (this.board.every(cell => cell !== '')) {
-                    this.endGame('Match nul !', 'draw');
-                    this.scores.draw++;
-                } else {
-                    this.currentPlayer = this.currentPlayer === 'X' ? 'O' : 'X';
-                    this.updateCurrentPlayerDisplay();
-                }
-            }
-
-            aiMove() {
-                let move;
-                switch (this.difficulty) {
-                    case 'easy':
-                        move = this.getRandomMove();
-                        break;
-                    case 'medium':
-                        move = Math.random() < 0.7 ? this.getBestMove() : this.getRandomMove();
-                        break;
-                    case 'hard':
-                        move = this.getBestMove();
-                        break;
-                }
-                this.makeMove(move, 'O');
-            }
-
-            getRandomMove() {
-                const availableMoves = this.board
-                    .map((cell, index) => cell === '' ? index : null)
-                    .filter(val => val !== null);
-                return availableMoves[Math.floor(Math.random() * availableMoves.length)];
-            }
-
-            getBestMove() {
-                // Vérifier si l'IA peut gagner
-                for (let i = 0; i < 9; i++) {
-                    if (this.board[i] === '') {
-                        this.board[i] = 'O';
-                        if (this.checkWin('O')) {
-                            this.board[i] = '';
-                            return i;
-                        }
-                        this.board[i] = '';
-                    }
-                }
-
-                // Vérifier si l'IA doit bloquer le joueur
-                for (let i = 0; i < 9; i++) {
-                    if (this.board[i] === '') {
-                        this.board[i] = 'X';
-                        if (this.checkWin('X')) {
-                            this.board[i] = '';
-                            return i;
-                        }
-                        this.board[i] = '';
-                    }
-                }
-
-                // Prendre le centre si disponible
-                if (this.board[4] === '') {
-                    return 4;
-                }
-
-                // Prendre un coin
-                const corners = [0, 2, 6, 8];
-                const availableCorners = corners.filter(corner => this.board[corner] === '');
-                if (availableCorners.length > 0) {
-                    return availableCorners[Math.floor(Math.random() * availableCorners.length)];
-                }
-
-                // Sinon, mouvement aléatoire
-                return this.getRandomMove();
-            }
-
-            checkWin(player) {
-                return this.winningConditions.some(condition => {
-                    return condition.every(index => this.board[index] === player);
-                });
-            }
-
-            highlightWinningCells() {
-                this.winningConditions.forEach(condition => {
-                    if (condition.every(index => this.board[index] !== '' && 
-                        this.board[index] === this.board[condition[0]])) {
-                        condition.forEach(index => {
-                            document.querySelector(`[data-index="${index}"]`).classList.add('winning');
-                        });
-                    }
-                });
-            }
-
-            endGame(message, type) {
-                this.gameActive = false;
-                this.showStatus(message, type);
-                this.saveScores();
-                this.updateScoreDisplay();
-                
-                // Désactiver toutes les cellules
-                document.querySelectorAll('.cell').forEach(cell => {
-                    cell.disabled = true;
-                });
-            }
-
-            showStatus(message, type) {
-                const statusEl = document.getElementById('statusMessage');
-                statusEl.textContent = message;
-                statusEl.className = `status-message show ${type}`;
-            }
-
-            newGame() {
-                this.board = Array(9).fill('');
-                this.currentPlayer = 'X';
-                this.gameActive = true;
-                
-                const cells = document.querySelectorAll('.cell');
-                cells.forEach(cell => {
-                    cell.textContent = '';
-                    cell.disabled = false;
-                    cell.className = 'cell';
-                });
-
-                const statusEl = document.getElementById('statusMessage');
-                statusEl.className = 'status-message';
-                
-                this.updateCurrentPlayerDisplay();
-            }
-
-            setDifficulty(e) {
-                document.querySelectorAll('.difficulty-btn').forEach(btn => {
-                    btn.classList.remove('active');
-                });
-                e.target.classList.add('active');
-                this.difficulty = e.target.getAttribute('data-level');
-                this.newGame();
-            }
-
-            updateCurrentPlayerDisplay() {
-                const playerEl = document.getElementById('currentPlayer');
-                if (this.currentPlayer === 'X') {
-                    playerEl.innerHTML = '<i class="fas fa-times"></i><span>Votre tour</span>';
-                    playerEl.className = 'current-player player-x';
-                } else {
-                    playerEl.innerHTML = '<i class="fas fa-circle"></i><span>Tour de l\'IA</span>';
-                    playerEl.className = 'current-player player-o';
-                }
-            }
-
-            updateScoreDisplay() {
-                document.getElementById('playerScore').textContent = this.scores.player;
-                document.getElementById('aiScore').textContent = this.scores.ai;
-                document.getElementById('drawScore').textContent = this.scores.draw;
-            }
-
-            updateDisplay() {
-                this.updateCurrentPlayerDisplay();
-                this.updateScoreDisplay();
-            }
-
-            resetScores() {
-                this.scores = { player: 0, ai: 0, draw: 0 };
-                this.saveScores();
-                this.updateScoreDisplay();
-                this.newGame();
-            }
-
-            saveScores() {
-                localStorage.setItem('morpionScores', JSON.stringify(this.scores));
-            }
-
-            loadScores() {
-                const saved = localStorage.getItem('morpionScores');
-                if (saved) {
-                    this.scores = JSON.parse(saved);
-                }
-            }
-        }
-
-        // Initialiser le jeu quand la page est chargée
-        document.addEventListener('DOMContentLoaded', () => {
-            new MorpionGame();
+        document.querySelectorAll('.service-card').forEach(card => {
+            observer.observe(card);
         });
     </script>
 </body>
