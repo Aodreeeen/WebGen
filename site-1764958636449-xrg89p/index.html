@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saucisses de France - Tradition & Saveurs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #2c2c2c;
+            background: linear-gradient(135deg, #f5f1eb 0%, #e8ddd4 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #8b4513 0%, #a0522d 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://source.unsplash.com/1600x900/?french-sausage-charcuterie') center/cover;
+            opacity: 0.2;
+            z-index: 1;
+        }
+
+        header .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            font-weight: 300;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #d4a574;
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            background: #c19a68;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        main {
+            padding: 80px 0;
+        }
+
+        .intro-section {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .intro-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: #8b4513;
+            margin-bottom: 30px;
+        }
+
+        .intro-text {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #5a5a5a;
+            line-height: 1.8;
+        }
+
+        .sausages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .sausage-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .sausage-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.3s ease;
+        }
+
+        .sausage-card:hover .card-image {
+            transform: scale(1.05);
+        }
+
+        .card-content {
+            padding: 30px;
+        }
+
+        .card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: #8b4513;
+            margin-bottom: 15px;
+        }
+
+        .card-description {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .origin {
+            display: inline-block;
+            background: #d4a574;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-top: 15px;
+        }
+
+        .tradition-section {
+            background: white;
+            padding: 60px 0;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .tradition-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+            align-items: center;
+        }
+
+        .tradition-text h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #8b4513;
+            margin-bottom: 25px;
+        }
+
+        .tradition-text p {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.8;
+            text-align: left;
+        }
+
+        .tradition-image {
+            width: 100%;
+            height: 400px;
+            background: url('https://source.unsplash.com/600x400/?french-charcuterie-traditional') center/cover;
+            border-radius: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .tradition-image:hover {
+            transform: scale(1.02);
+        }
+
+        footer {
+            background: #2c2c2c;
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .sausages-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .tradition-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .tradition-image {
+                height: 300px;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="fade-in">Saucisses de France</h1>
+            <p class="subtitle fade-in">Découvrez l'art ancestral de la charcuterie française</p>
+            <a href="#saucisses" class="cta-button fade-in">Explorer nos spécialités</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="intro-section">
+                <h2>Un patrimoine gastronomique d'exception</h2>
+                <p class="intro-text">
+                    La France possède une riche tradition charcutière qui se transmet de génération en génération. 
+                    Chaque région a développé ses propres spécialités, utilisant des techniques ancestrales et des ingrédients locaux 
+                    pour créer des saucisses aux saveurs uniques et authentiques.
+                </p>
+            </section>
+
+            <section id="saucisses" class="sausages-grid">
+                <div class="sausage-card">
+                    <div class="card-image" style="background-image: url('https://source.unsplash.com/800x600/?toulouse-sausage');"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">Saucisse de Toulouse</h3>
+                        <p class="card-description">
+                            Emblématique du Sud-Ouest, cette saucisse de porc fraîche est parfumée à l'ail et aux épices. 
+                            Elle est l'ingrédient star du cassoulet traditionnel.
+                        </p>
+                        <span class="origin">Toulouse, Occitanie</span>
+                    </div>
+                </div>
+
+                <div class="sausage-card">
+                    <div class="card-image" style="background-image: url('https://source.unsplash.com/800x600/?morteau-sausage');"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">Saucisse de Morteau</h3>
+                        <p class="card-description">
+                            Cette saucisse fumée IGP du Haut-Doubs se distingue par son fumage au bois de résineux 
+                            et sa cheville en bois de sapin qui lui donne son caractère unique.
+                        </p>
+                        <span class="origin">Franche-Comté</span>
+                    </div>
+                </div>
+
+                <div class="sausage-card">
+                    <div class="card-image" style="background-image: url('https://source.unsplash.com/800x600/?strasbourg-sausage');"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">Saucisse de Strasbourg</h3>
+                        <p class="card-description">
+                            Fine et délicate, cette saucisse fumée à base de porc et de bœuf 
+                            est parfaite grillée ou en accompagnement de choucroute alsacienne.
+                        </p>
+                        <span class="origin">Alsace</span>
+                    </div>
+                </div>
+
+                <div class="saucage-card">
+                    <div class="card-image" style="background-image: url('https://source.unsplash.com/800x600/?montbeliard-sausage');"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">Saucisse de Montbéliard</h3>
+                        <p class="card-description">
+                            Protégée par une IGP, cette saucisse fumée au bois de résineux 
+                            se caractérise par sa forme en U et son goût authentique de terroir.
+                        </p>
+                        <span class="origin">Franche-Comté</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="tradition-section">
+                <div class="container">
+                    <div class="tradition-content">
+                        <div class="tradition-text">
+                            <h3>Tradition & Savoir-faire</h3>
+                            <p>
+                                Depuis des siècles, les charcutiers français perpétuent un art culinaire exceptionnel. 
+                                Chaque saucisse raconte l'histoire d'un terroir, d'une technique de fabrication transmise 
+                                de maître en apprenti. Les appellations contrôlées et les IGP protègent aujourd'hui 
+                                ces trésors gastronomiques, garantissant l'authenticité et la qualité de nos spécialités régionales.
+                            </p>
+                        </div>
+                        <div class="tradition-image"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 Saucisses de France - Célébrons notre patrimoine charcutier</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Animation au scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observer les éléments à animer
+        document.querySelectorAll('.sausage-card, .intro-section, .tradition-section').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll pour le bouton CTA
+        document.querySelector('.cta-button').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector('#saucisses').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+
+        // Animation des cartes au hover
+        document.querySelectorAll('.sausage-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
