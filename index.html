@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loly - Documentaire sur les Sucettes Iconiques</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>Loli Anime Documentary - L'Univers de l'Animation Japonaise</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -13,58 +13,47 @@
             box-sizing: border-box;
         }
 
-        :root {
-            --primary-color: #ff6b9d;
-            --secondary-color: #ffd93d;
-            --accent-color: #6bcf7f;
-            --purple: #a8e6cf;
-            --dark: #2c3e50;
-            --light: #f8f9fa;
-            --gradient-1: linear-gradient(135deg, #ff6b9d, #ffd93d);
-            --gradient-2: linear-gradient(135deg, #6bcf7f, #a8e6cf);
-            --gradient-3: linear-gradient(135deg, #ffd93d, #ff6b9d, #6bcf7f);
-        }
-
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Poppins', sans-serif;
             line-height: 1.6;
-            color: var(--dark);
-            background: linear-gradient(45deg, #fff5f8, #fffef7);
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow-x: hidden;
         }
 
-        h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
         /* Header */
-        .header {
-            background: var(--gradient-1);
-            padding: 1rem 0;
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 20px rgba(255, 107, 157, 0.2);
-            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
         }
 
-        .nav {
-            max-width: 1200px;
-            margin: 0 auto;
+        nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 2rem;
+            padding: 1rem 0;
         }
 
         .logo {
-            font-size: 2rem;
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1.8rem;
             font-weight: 700;
-            color: white;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .nav-links {
@@ -74,24 +63,41 @@
         }
 
         .nav-links a {
-            color: white;
             text-decoration: none;
+            color: #333;
             font-weight: 500;
             transition: all 0.3s ease;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
+            position: relative;
         }
 
         .nav-links a:hover {
-            background: rgba(255, 255, 255, 0.2);
+            color: #ff6b6b;
             transform: translateY(-2px);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
         /* Hero Section */
         .hero {
-            background: var(--gradient-3);
-            padding: 120px 2rem 80px;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
+            color: white;
             position: relative;
             overflow: hidden;
         }
@@ -103,42 +109,295 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="25" cy="25" r="3" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="25" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="50" r="4" fill="rgba(255,255,255,0.1)"/><circle cx="25" cy="75" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="3" fill="rgba(255,255,255,0.1)"/></svg>');
-            animation: float 20s infinite linear;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(180deg); }
-            100% { transform: translateY(0px) rotate(360deg); }
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8));
+            z-index: 1;
         }
 
         .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
             position: relative;
             z-index: 2;
+            animation: fadeInUp 1s ease;
         }
 
         .hero h1 {
-            font-size: 4rem;
+            font-size: 3.5rem;
+            font-weight: 700;
             margin-bottom: 1rem;
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            animation: slideUp 1s ease-out;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             margin-bottom: 2rem;
-            color: white;
-            animation: slideUp 1s ease-out 0.3s both;
+            opacity: 0.9;
         }
 
-        @keyframes slideUp {
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Floating Elements */
+        .floating-icon {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-icon:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-icon:nth-child(2) {
+            top: 60%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        .floating-icon:nth-child(3) {
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        /* Content Sections */
+        .section {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .section:nth-child(even) {
+            background: #f8f9ff;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Video Placeholder */
+        .video-placeholder {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .video-placeholder:hover {
+            transform: scale(1.02);
+        }
+
+        .video-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: linear-gradient(to bottom, #ff6b6b, #4ecdc4);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background: inherit;
+            width: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background: #ff6b6b;
+            border: 4px solid white;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+            background: #4ecdc4;
+        }
+
+        .timeline-content {
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #4ecdc4;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-3px) scale(1.1);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(50px);
             }
             to {
                 opacity: 1;
@@ -146,475 +405,231 @@
             }
         }
 
-        .cta-button {
-            display: inline-block;
-            background: white;
-            color: var(--primary-color);
-            padding: 1rem 2rem;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            animation: slideUp 1s ease-out 0.6s both;
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
         }
 
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        @keyframes pulse {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.7;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.1);
+                opacity: 0.3;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.7;
+            }
         }
 
-        /* Visual Placeholder */
-        .visual-placeholder {
-            width: 200px;
-            height: 200px;
-            margin: 2rem auto;
-            background: var(--gradient-2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            color: white;
-            animation: spin 10s linear infinite;
-            box-shadow: 0 20px 60px rgba(107, 207, 127, 0.3);
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Sections */
-        .section {
-            padding: 80px 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section h2 {
-            font-size: 3rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            color: var(--dark);
-            position: relative;
-        }
-
-        .section h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: var(--gradient-1);
-            border-radius: 2px;
-        }
-
-        /* About Section */
-        .about {
-            background: white;
-            border-radius: 20px;
-            padding: 60px;
-            margin: 40px 0;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about-text p {
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            color: #666;
-        }
-
-        .about-visual {
-            width: 100%;
-            height: 300px;
-            background: var(--gradient-1);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 5rem;
-            color: white;
-            transition: all 0.3s ease;
-        }
-
-        .about-visual:hover {
-            transform: scale(1.05) rotate(5deg);
-        }
-
-        /* Features Grid */
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .feature-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--gradient-1);
-        }
-
-        .feature-card:nth-child(2)::before {
-            background: var(--gradient-2);
-        }
-
-        .feature-card:nth-child(3)::before {
-            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
-        }
-
-        .feature-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 1rem;
-            background: var(--gradient-1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            color: white;
-        }
-
-        .feature-card:nth-child(2) .feature-icon {
-            background: var(--gradient-2);
-        }
-
-        .feature-card:nth-child(3) .feature-icon {
-            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
-        }
-
-        .feature-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--dark);
-        }
-
-        .feature-card p {
-            color: #666;
-            line-height: 1.6;
-        }
-
-        /* Timeline */
-        .timeline {
-            position: relative;
-            padding: 2rem 0;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: var(--gradient-1);
-            transform: translateX(-50%);
-        }
-
-        .timeline-item {
-            display: flex;
-            margin: 2rem 0;
-            position: relative;
-        }
-
-        .timeline-item:nth-child(even) {
-            flex-direction: row-reverse;
-        }
-
-        .timeline-content {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            width: 45%;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            position: relative;
-        }
-
-        .timeline-dot {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            width: 20px;
-            height: 20px;
-            background: var(--primary-color);
-            border-radius: 50%;
-            border: 4px solid white;
-            box-shadow: 0 0 0 4px var(--primary-color);
-        }
-
-        /* Contact Section */
-        .contact {
-            background: var(--gradient-2);
-            border-radius: 20px;
-            padding: 60px;
-            text-align: center;
-            color: white;
-        }
-
-        .contact h2 {
-            color: white;
-            margin-bottom: 2rem;
-        }
-
-        .contact p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .social-links a {
-            color: white;
-            font-size: 2rem;
-            transition: all 0.3s ease;
-        }
-
-        .social-links a:hover {
-            transform: translateY(-3px) scale(1.2);
-        }
-
-        /* Footer */
-        .footer {
-            background: var(--dark);
-            color: white;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        /* Mobile Responsive */
+        /* Responsive */
         @media (max-width: 768px) {
-            .nav {
-                flex-direction: column;
-                gap: 1rem;
-                padding: 1rem;
-            }
-
             .nav-links {
-                gap: 1rem;
-            }
-
-            .hero {
-                padding: 100px 1rem 60px;
+                display: none;
             }
 
             .hero h1 {
                 font-size: 2.5rem;
             }
 
-            .section {
-                padding: 60px 1rem;
+            .hero p {
+                font-size: 1.1rem;
             }
 
-            .section h2 {
+            .section-title {
                 font-size: 2rem;
             }
 
-            .about {
-                padding: 2rem;
-                margin: 20px 0;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .timeline::before {
-                left: 20px;
+            .timeline::after {
+                left: 31px;
             }
 
             .timeline-item {
-                flex-direction: column;
-                padding-left: 60px;
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item::after {
+                left: 21px;
             }
 
             .timeline-item:nth-child(even) {
-                flex-direction: column;
+                left: 0;
             }
 
-            .timeline-content {
-                width: 100%;
-            }
-
-            .timeline-dot {
-                left: 20px;
-            }
-
-            .contact {
-                padding: 2rem;
+            .timeline-item:nth-child(even)::after {
+                left: 21px;
             }
         }
     </style>
 </head>
 <body>
     <!-- Header -->
-    <header class="header">
-        <nav class="nav">
-            <a href="#" class="logo">
-                <i class="fas fa-candy-cane"></i>
-                LOLY
-            </a>
+    <header>
+        <nav class="container">
+            <div class="logo">アニメ Documentary</div>
             <ul class="nav-links">
+                <li><a href="#home">Accueil</a></li>
                 <li><a href="#about">À propos</a></li>
-                <li><a href="#story">Histoire</a></li>
-                <li><a href="#timeline">Chronologie</a></li>
+                <li><a href="#timeline">Histoire</a></li>
+                <li><a href="#episodes">Épisodes</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" id="home">
+        <div class="floating-icon"><i class="fas fa-star"></i></div>
+        <div class="floating-icon"><i class="fas fa-heart"></i></div>
+        <div class="floating-icon"><i class="fas fa-magic"></i></div>
+        
         <div class="hero-content">
-            <h1>LOLY</h1>
-            <p>Un voyage sucré à travers l'histoire des sucettes les plus iconiques au monde</p>
-            <div class="visual-placeholder">
-                <i class="fas fa-lollipop"></i>
-            </div>
-            <a href="#about" class="cta-button">
-                <i class="fas fa-play"></i> Découvrir le documentaire
-            </a>
+            <h1>L'Art de l'Animation Japonaise</h1>
+            <p>Découvrez l'univers fascinant des personnages kawaii dans l'animation japonaise</p>
+            <a href="#about" class="cta-button">Commencer l'exploration</a>
         </div>
     </section>
 
     <!-- About Section -->
     <section class="section" id="about">
-        <div class="about">
-            <h2>L'Histoire Sucrée</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>Plongez dans l'univers coloré et savoureux des sucettes Loly, ces petites douceurs qui ont marqué des générations d'enfants à travers le monde.</p>
-                    <p>De leur création artisanale aux techniques de production modernes, découvrez comment ces bonbons sur bâtonnet sont devenus des icônes de la confiserie internationale.</p>
-                    <p>Ce documentaire explore non seulement l'aspect industriel, mais aussi l'impact culturel et les souvenirs d'enfance que ces sucettes ont créés.</p>
-                </div>
-                <div class="about-visual">
-                    <i class="fas fa-heart"></i>
-                </div>
+        <div class="container">
+            <h2 class="section-title">Un Documentaire Unique</h2>
+            <p style="text-align: center; font-size: 1.2rem; color: #666; max-width: 800px; margin: 0 auto;">Ce documentaire explore l'évolution artistique et culturelle des personnages mignons dans l'animation japonaise, analysant leur impact sur la culture populaire mondiale et leur signification dans l'art contemporain.</p>
+            
+            <div class="video-placeholder">
+                <i class="fas fa-play"></i>
             </div>
-        </div>
-    </section>
 
-    <!-- Features Section -->
-    <section class="section" id="story">
-        <h2>Au Cœur du Documentaire</h2>
-        <div class="features">
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-industry"></i>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Art & Design</h3>
+                    <p>Analyse approfondie des techniques artistiques et des choix esthétiques qui définissent ce style unique d'animation japonaise.</p>
                 </div>
-                <h3>Production Artisanale</h3>
-                <p>Découvrez les secrets de fabrication, des recettes traditionnelles aux innovations modernes qui font le succès des Loly.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-users"></i>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Impact Cultural</h3>
+                    <p>Exploration de l'influence de ces personnages sur la culture populaire mondiale et leur réception internationale.</p>
                 </div>
-                <h3>Témoignages</h3>
-                <p>Rencontrez les créateurs, les employés et les consommateurs qui partagent leur passion pour ces délicieuses sucettes.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-globe"></i>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <h3>Évolution Historique</h3>
+                    <p>Retrace l'évolution de ces designs de personnages depuis les origines de l'animation japonaise jusqu'à aujourd'hui.</p>
                 </div>
-                <h3>Impact Mondial</h3>
-                <p>Explorez comment les Loly ont conquis le monde et sont devenues un phénomène culturel international.</p>
             </div>
         </div>
     </section>
 
     <!-- Timeline Section -->
     <section class="section" id="timeline">
-        <h2>Chronologie</h2>
-        <div class="timeline">
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <h3>1970 - Les Débuts</h3>
-                    <p>Création des premières sucettes Loly dans un petit atelier familial, avec des saveurs simples mais authentiques.</p>
+        <div class="container">
+            <h2 class="section-title">Chronologie de l'Animation</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>1960s - Les Pionniers</h3>
+                        <p>Émergence des premiers styles de personnages kawaii dans l'animation japonaise classique.</p>
+                    </div>
                 </div>
-                <div class="timeline-dot"></div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <h3>1985 - L'Innovation</h3>
-                    <p>Introduction des sucettes multi-couleurs et des saveurs exotiques qui révolutionnent le marché.</p>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>1980s - L'Âge d'Or</h3>
+                        <p>Développement et popularisation des archétypes de personnages mignons dans l'anime.</p>
+                    </div>
                 </div>
-                <div class="timeline-dot"></div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <h3>1995 - Expansion Internationale</h3>
-                    <p>Les Loly conquièrent l'Europe puis le monde, devenant une marque reconnue mondialement.</p>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>2000s - Mondialisation</h3>
+                        <p>Expansion internationale et influence sur les médias occidentaux.</p>
+                    </div>
                 </div>
-                <div class="timeline-dot"></div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <h3>2020 - Durabilité</h3>
-                    <p>Engagement vers des pratiques plus durables avec des emballages écologiques et des ingrédients naturels.</p>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Aujourd'hui - Évolution</h3>
+                        <p>Adaptation aux nouvelles technologies et tendances artistiques contemporaines.</p>
+                    </div>
                 </div>
-                <div class="timeline-dot"></div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="section" id="contact">
-        <div class="contact">
-            <h2>Rejoignez l'Aventure</h2>
-            <p>Suivez-nous pour ne rien manquer de la sortie du documentaire et découvrir des contenus exclusifs sur l'univers des Loly.</p>
-            <div class="social-links">
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
+    <!-- Episodes Section -->
+    <section class="section" id="episodes">
+        <div class="container">
+            <h2 class="section-title">Épisodes du Documentaire</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                    <h3>Épisode 1: Les Origines</h3>
+                    <p>Retour aux sources de l'animation japonaise et naissance des premiers personnages iconiques.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>Épisode 2: Techniques Artistiques</h3>
+                    <p>Analyse des méthodes de création et des innovations techniques dans le character design.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Épisode 3: Impact Social</h3>
+                    <p>L'influence de ces personnages sur la société japonaise et leur rôle culturel.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <p>&copy; 2024 Loly Documentary. Tous droits réservés. Un voyage sucré dans l'histoire.</p>
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>À Propos</h4>
+                    <p>Un documentaire éducatif sur l'art et la culture de l'animation japonaise, réalisé avec respect et expertise académique.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Email: contact@animedoc.com<br>
+Téléphone: +33 1 23 45 67 89</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Ressources</h4>
+                    <p>Bibliographie<br>Sources académiques<br>Références culturelles</p>
+                </div>
+            </div>
+            
+            <div class="social-links">
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+            </div>
+            
+            <p style="margin-top: 2rem; opacity: 0.7;">&copy; 2024 Anime Documentary. Tous droits réservés. Contenu éducatif et culturel.</p>
+        </div>
     </footer>
 
     <script>
-        // Smooth scrolling pour les liens de navigation
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -628,7 +643,17 @@
             });
         });
 
-        // Animation au scroll
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+
+        // Card animation on scroll
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -637,37 +662,22 @@
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.animation = 'slideUp 0.8s ease-out forwards';
+                    entry.target.style.animation = 'fadeInUp 0.8s ease forwards';
                 }
             });
         }, observerOptions);
 
-        // Observer les cartes et éléments
-        document.querySelectorAll('.feature-card, .timeline-item, .about').forEach(el => {
+        document.querySelectorAll('.card, .timeline-item').forEach(el => {
             observer.observe(el);
         });
 
-        // Parallax effect pour le hero
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const hero = document.querySelector('.hero');
-            const rate = scrolled * -0.5;
-            
-            if (hero) {
-                hero.style.transform = `translateY(${rate}px)`;
-            }
-        });
-
-        // Animation des icônes au hover
-        document.querySelectorAll('.feature-icon').forEach(icon => {
-            icon.addEventListener('mouseenter', () => {
-                icon.style.transform = 'scale(1.1) rotate(360deg)';
-                icon.style.transition = 'all 0.6s ease';
-            });
-            
-            icon.addEventListener('mouseleave', () => {
-                icon.style.transform = 'scale(1) rotate(0deg)';
-            });
+        // Video placeholder click effect
+        document.querySelector('.video-placeholder').addEventListener('click', function() {
+            this.style.transform = 'scale(0.98)';
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+                alert('Lecteur vidéo - Contenu éducatif disponible');
+            }, 150);
         });
     </script>
 </body>
