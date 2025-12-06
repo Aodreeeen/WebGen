@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tanguy Actu - Actualités Russie-Ukraine</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>TFT Champions - Toujours Top 1</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -13,11 +13,24 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --primary-gold: #C89B3C;
+            --secondary-gold: #F0E6D2;
+            --dark-blue: #0F2027;
+            --medium-blue: #203A43;
+            --light-blue: #2C5364;
+            --accent-purple: #C89B3C;
+            --text-light: #F0E6D2;
+            --text-dark: #0A1428;
+            --gradient-main: linear-gradient(135deg, #0F2027 0%, #203A43 50%, #2C5364 100%);
+            --gradient-gold: linear-gradient(135deg, #C89B3C 0%, #F0E6D2 100%);
+        }
+
         body {
             font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            color: #1a1a1a;
-            background-color: #f8fafc;
+            background: var(--gradient-main);
+            color: var(--text-light);
+            overflow-x: hidden;
         }
 
         .container {
@@ -27,316 +40,293 @@
         }
 
         /* Header */
-        .header {
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-            color: white;
-            padding: 1rem 0;
-            position: sticky;
+        header {
+            position: fixed;
             top: 0;
-            z-index: 100;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            background: rgba(15, 32, 39, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
         }
 
-        .header-content {
+        nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
         }
 
         .logo {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--primary-gold);
+            text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 10px;
         }
 
         .logo i {
             font-size: 2rem;
-            color: #fbbf24;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .logo h1 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
-
-        .nav {
+        .nav-links {
             display: flex;
+            list-style: none;
             gap: 2rem;
-            align-items: center;
         }
 
-        .nav a {
-            color: white;
+        .nav-links a {
+            color: var(--text-light);
             text-decoration: none;
             font-weight: 500;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            transition: all 0.3s ease;
+            transition: color 0.3s ease;
+            position: relative;
         }
 
-        .nav a:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-            transform: translateY(-2px);
+        .nav-links a:hover {
+            color: var(--primary-gold);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: white;
-            padding: 4rem 0;
-            text-align: center;
-        }
-
-        .hero h2 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #fbbf24, #f59e0b);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* Breaking News */
-        .breaking-news {
-            background: linear-gradient(135deg, #dc2626, #ef4444);
-            color: white;
-            padding: 1rem 0;
-            margin: 2rem 0;
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        .breaking-content {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            animation: scroll 20s linear infinite;
-        }
-
-        .breaking-label {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-weight: 600;
-            white-space: nowrap;
-        }
-
-        @keyframes scroll {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
-        }
-
-        /* Main Content */
-        .main-content {
-            padding: 3rem 0;
-        }
-
-        .content-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 3rem;
-        }
-
-        .news-section h3 {
-            font-size: 2rem;
-            font-weight: 600;
-            margin-bottom: 2rem;
-            color: #1e293b;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .news-section i {
-            color: #3b82f6;
-        }
-
-        /* Article Cards */
-        .article-card {
-            background: white;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-            margin-bottom: 2rem;
-            border: 1px solid #e2e8f0;
-        }
-
-        .article-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
-        }
-
-        .article-image {
-            height: 200px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            text-align: center;
             position: relative;
-            overflow: hidden;
+            background: var(--gradient-main);
         }
 
-        .article-image::before {
+        .hero::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.3), transparent 50%),
-                        radial-gradient(circle at 70% 80%, rgba(255, 255, 255, 0.2), transparent 50%);
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="hexagon" patternUnits="userSpaceOnUse" width="20" height="17.32"><polygon points="10,1.73 5,8.66 5,8.66 10,15.59 15,8.66 15,8.66" fill="none" stroke="%23C89B3C" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23hexagon)"/></svg>') repeat;
+            opacity: 0.3;
         }
 
-        .article-image i {
-            font-size: 3rem;
-            color: white;
-            opacity: 0.7;
+        .hero-content {
+            z-index: 2;
+            position: relative;
         }
 
-        .article-content {
-            padding: 1.5rem;
-        }
-
-        .article-meta {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
+        .hero h1 {
+            font-family: 'Orbitron', monospace;
+            font-size: 4rem;
+            font-weight: 900;
             margin-bottom: 1rem;
-            font-size: 0.9rem;
-            color: #64748b;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 2s ease-in-out infinite alternate;
         }
 
-        .article-meta span {
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 20px rgba(200, 155, 60, 0.5)); }
+            to { filter: drop-shadow(0 0 30px rgba(200, 155, 60, 0.8)); }
         }
 
-        .category-tag {
-            background: linear-gradient(135deg, #fbbf24, #f59e0b);
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        .article-title {
+        .hero p {
             font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 0.8rem;
-            color: #1e293b;
-            line-height: 1.4;
+            margin-bottom: 2rem;
+            opacity: 0.9;
         }
 
-        .article-excerpt {
-            color: #475569;
-            margin-bottom: 1rem;
-            line-height: 1.6;
-        }
-
-        .read-more {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: #3b82f6;
-            font-weight: 500;
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: var(--gradient-gold);
+            color: var(--text-dark);
             text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .read-more:hover {
-            color: #1d4ed8;
-            transform: translateX(4px);
-        }
-
-        /* Sidebar */
-        .sidebar {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        .widget {
-            background: white;
-            padding: 2rem;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            border: 1px solid #e2e8f0;
-        }
-
-        .widget h4 {
-            font-size: 1.3rem;
+            border-radius: 50px;
             font-weight: 600;
-            margin-bottom: 1.5rem;
-            color: #1e293b;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .trending-item {
-            display: flex;
-            gap: 1rem;
-            padding: 1rem 0;
-            border-bottom: 1px solid #e2e8f0;
+            font-size: 1.1rem;
             transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(200, 155, 60, 0.3);
         }
 
-        .trending-item:last-child {
-            border-bottom: none;
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(200, 155, 60, 0.5);
         }
 
-        .trending-item:hover {
-            background-color: #f8fafc;
-            border-radius: 8px;
-            padding: 1rem;
-            margin: 0 -1rem;
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+            background: rgba(240, 230, 210, 0.05);
         }
 
-        .trending-number {
-            width: 30px;
-            height: 30px;
-            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-            color: white;
+        .section-title {
+            text-align: center;
+            font-family: 'Orbitron', monospace;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            color: var(--primary-gold);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .feature-card {
+            background: rgba(32, 58, 67, 0.7);
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(200, 155, 60, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(200, 155, 60, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .feature-card:hover::before {
+            left: 100%;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(200, 155, 60, 0.2);
+            border-color: var(--primary-gold);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-gold);
             border-radius: 50%;
+            margin: 0 auto 2rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 2rem;
+            color: var(--text-dark);
         }
 
-        .trending-content h5 {
-            font-weight: 500;
-            margin-bottom: 0.3rem;
-            color: #1e293b;
-            line-height: 1.3;
+        .feature-card h3 {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-gold);
         }
 
-        .trending-time {
-            font-size: 0.8rem;
-            color: #64748b;
+        /* Strategies Section */
+        .strategies {
+            padding: 100px 0;
+        }
+
+        .strategies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .strategy-card {
+            background: rgba(44, 83, 100, 0.6);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid var(--primary-gold);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .strategy-card:hover {
+            transform: translateX(10px);
+            background: rgba(44, 83, 100, 0.8);
+        }
+
+        .strategy-rank {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-gold);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            color: var(--text-dark);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 100px 0;
+            background: rgba(15, 32, 39, 0.8);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 2rem;
+        }
+
+        .stat-number {
+            font-family: 'Orbitron', monospace;
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--primary-gold);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.8;
         }
 
         /* Footer */
-        .footer {
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-            color: white;
-            padding: 3rem 0 1rem;
-            margin-top: 4rem;
+        footer {
+            padding: 50px 0;
+            background: var(--dark-blue);
+            text-align: center;
+            border-top: 1px solid rgba(200, 155, 60, 0.2);
         }
 
         .footer-content {
@@ -347,360 +337,344 @@
         }
 
         .footer-section h4 {
-            font-size: 1.2rem;
-            font-weight: 600;
+            color: var(--primary-gold);
             margin-bottom: 1rem;
-            color: #fbbf24;
+            font-family: 'Orbitron', monospace;
         }
 
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-links a {
-            color: #cbd5e1;
+        .footer-section a {
+            color: var(--text-light);
             text-decoration: none;
-            transition: color 0.3s ease;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
         }
 
-        .footer-links a:hover {
-            color: #fbbf24;
+        .footer-section a:hover {
+            opacity: 1;
+            color: var(--primary-gold);
         }
 
         .social-links {
             display: flex;
+            justify-content: center;
             gap: 1rem;
-            margin-top: 1rem;
+            margin: 2rem 0;
         }
 
         .social-links a {
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
+            width: 50px;
+            height: 50px;
+            background: rgba(200, 155, 60, 0.1);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
+            color: var(--primary-gold);
+            font-size: 1.2rem;
             transition: all 0.3s ease;
         }
 
         .social-links a:hover {
-            background: #fbbf24;
-            transform: translateY(-2px);
+            background: var(--primary-gold);
+            color: var(--text-dark);
+            transform: translateY(-3px);
         }
 
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid #334155;
-            color: #94a3b8;
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--primary-gold);
         }
 
-        /* Responsive Design */
+        /* Responsive */
         @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                text-align: center;
+            .nav-links {
+                display: none;
             }
 
-            .nav {
-                flex-wrap: wrap;
-                justify-content: center;
+            .mobile-menu {
+                display: block;
             }
 
-            .hero h2 {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
                 font-size: 2rem;
             }
 
-            .content-grid {
+            .features-grid {
                 grid-template-columns: 1fr;
-                gap: 2rem;
             }
 
-            .breaking-content {
-                flex-direction: column;
-                text-align: center;
-                animation: none;
-            }
-
-            .article-image {
-                height: 150px;
-            }
-
-            .trending-item {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-        }
-
-        @media (max-width: 480px) {
             .container {
                 padding: 0 15px;
             }
+        }
 
-            .hero {
-                padding: 2rem 0;
-            }
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
 
-            .main-content {
-                padding: 2rem 0;
-            }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-            .widget {
-                padding: 1.5rem;
-            }
+        /* Game Board Placeholder */
+        .game-board {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(45deg, #0F2027, #203A43);
+            border-radius: 20px;
+            margin: 3rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--primary-gold);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .game-board::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(200, 155, 60, 0.1) 10px,
+                rgba(200, 155, 60, 0.1) 20px
+            );
+        }
+
+        .game-board-content {
+            text-align: center;
+            z-index: 2;
+        }
+
+        .game-board i {
+            font-size: 4rem;
+            color: var(--primary-gold);
+            margin-bottom: 1rem;
         }
     </style>
 </head>
 <body>
-    <header class="header">
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <i class="fas fa-globe-europe"></i>
-                    <h1>Tanguy Actu</h1>
-                </div>
-                <nav class="nav">
-                    <a href="#"><i class="fas fa-home"></i> Accueil</a>
-                    <a href="#"><i class="fas fa-flag"></i> Russie</a>
-                    <a href="#"><i class="fas fa-flag"></i> Ukraine</a>
-                    <a href="#"><i class="fas fa-users"></i> Contact</a>
-                </nav>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">
+                <i class="fas fa-crown"></i>
+                TFT Champions
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home">Accueil</a></li>
+                <li><a href="#features">Fonctionnalités</a></li>
+                <li><a href="#strategies">Stratégies</a></li>
+                <li><a href="#stats">Statistiques</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
             </div>
-        </div>
+        </nav>
     </header>
 
-    <section class="hero">
+    <!-- Hero Section -->
+    <section id="home" class="hero">
         <div class="container">
-            <h2>Actualités Russie-Ukraine</h2>
-            <p>Suivez en temps réel les derniers développements du conflit russo-ukrainien avec des analyses approfondies et des informations vérifiées.</p>
+            <div class="hero-content fade-in">
+                <h1>TOUJOURS TOP 1</h1>
+                <p>Maîtrisez Teamfight Tactics avec nos stratégies éprouvées et dominez chaque partie</p>
+                <a href="#features" class="cta-button">
+                    <i class="fas fa-play"></i> Commencer à Gagner
+                </a>
+            </div>
         </div>
     </section>
 
-    <div class="container">
-        <div class="breaking-news">
-            <div class="breaking-content">
-                <span class="breaking-label"><i class="fas fa-bolt"></i> DERNIÈRE MINUTE</span>
-                <span>Nouvelles négociations diplomatiques prévues cette semaine • Aide humanitaire renforcée dans les zones touchées • Point sur la situation économique</span>
-            </div>
-        </div>
-    </div>
-
-    <main class="main-content">
+    <!-- Features Section -->
+    <section id="features" class="features">
         <div class="container">
-            <div class="content-grid">
-                <section class="news-section">
-                    <h3><i class="fas fa-newspaper"></i> Dernières Actualités</h3>
-                    
-                    <article class="article-card">
-                        <div class="article-image">
-                            <i class="fas fa-handshake"></i>
-                        </div>
-                        <div class="article-content">
-                            <div class="article-meta">
-                                <span class="category-tag">Diplomatie</span>
-                                <span><i class="fas fa-clock"></i> Il y a 2h</span>
-                                <span><i class="fas fa-user"></i> Tanguy Martin</span>
-                            </div>
-                            <h4 class="article-title">Nouvelles initiatives diplomatiques pour résoudre le conflit</h4>
-                            <p class="article-excerpt">Les dirigeants européens se réunissent pour discuter de nouvelles propositions de paix. Cette rencontre pourrait marquer un tournant décisif dans les négociations entre les parties...</p>
-                            <a href="#" class="read-more">Lire la suite <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </article>
+            <h2 class="section-title fade-in">Pourquoi Choisir TFT Champions ?</h2>
+            
+            <div class="game-board fade-in">
+                <div class="game-board-content">
+                    <i class="fas fa-chess-board"></i>
+                    <h3>Plateau de Jeu Interactif</h3>
+                    <p>Simulez vos compositions et testez vos stratégies</p>
+                </div>
+            </div>
 
-                    <article class="article-card">
-                        <div class="article-image">
-                            <i class="fas fa-heart"></i>
-                        </div>
-                        <div class="article-content">
-                            <div class="article-meta">
-                                <span class="category-tag">Humanitaire</span>
-                                <span><i class="fas fa-clock"></i> Il y a 4h</span>
-                                <span><i class="fas fa-user"></i> Sarah Dubois</span>
-                            </div>
-                            <h4 class="article-title">Aide humanitaire : un corridor sécurisé établi</h4>
-                            <p class="article-excerpt">Un nouveau corridor humanitaire a été mis en place pour faciliter l'acheminement de l'aide aux populations civiles. Cette initiative permet d'apporter des secours essentiels...</p>
-                            <a href="#" class="read-more">Lire la suite <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </article>
-
-                    <article class="article-card">
-                        <div class="article-image">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                        <div class="article-content">
-                            <div class="article-meta">
-                                <span class="category-tag">Économie</span>
-                                <span><i class="fas fa-clock"></i> Il y a 6h</span>
-                                <span><i class="fas fa-user"></i> Pierre Laurent</span>
-                            </div>
-                            <h4 class="article-title">Impact économique : analyse des sanctions</h4>
-                            <p class="article-excerpt">Une étude détaillée révèle les effets des sanctions économiques sur les différents secteurs. Les experts analysent les conséquences à long terme...</p>
-                            <a href="#" class="read-more">Lire la suite <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </article>
-                </section>
-
-                <aside class="sidebar">
-                    <div class="widget">
-                        <h4><i class="fas fa-fire"></i> Tendances</h4>
-                        <div class="trending-item">
-                            <div class="trending-number">1</div>
-                            <div class="trending-content">
-                                <h5>Sommet européen sur la crise ukrainienne</h5>
-                                <div class="trending-time">Il y a 1h</div>
-                            </div>
-                        </div>
-                        <div class="trending-item">
-                            <div class="trending-number">2</div>
-                            <div class="trending-content">
-                                <h5>Nouvelles mesures d'aide aux réfugiés</h5>
-                                <div class="trending-time">Il y a 3h</div>
-                            </div>
-                        </div>
-                        <div class="trending-item">
-                            <div class="trending-number">3</div>
-                            <div class="trending-content">
-                                <h5>Analyse : situation énergétique européenne</h5>
-                                <div class="trending-time">Il y a 5h</div>
-                            </div>
-                        </div>
-                        <div class="trending-item">
-                            <div class="trending-number">4</div>
-                            <div class="trending-content">
-                                <h5>Reconstruction : premiers projets lancés</h5>
-                                <div class="trending-time">Il y a 8h</div>
-                            </div>
-                        </div>
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-trophy"></i>
                     </div>
+                    <h3>Stratégies Gagnantes</h3>
+                    <p>Des compositions meta analysées par nos experts pour garantir votre victoire</p>
+                </div>
 
-                    <div class="widget">
-                        <h4><i class="fas fa-info-circle"></i> À Propos</h4>
-                        <p>Tanguy Actu vous propose une couverture complète et objective du conflit russo-ukrainien. Nos journalistes expérimentés analysent les développements avec rigueur et impartialité.</p>
-                        <div class="social-links">
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-facebook"></i></a>
-                            <a href="#"><i class="fab fa-linkedin"></i></a>
-                            <a href="#"><i class="fab fa-telegram"></i></a>
-                        </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
                     </div>
+                    <h3>Analyses en Temps Réel</h3>
+                    <p>Suivez les tendances du meta et adaptez votre style de jeu instantanément</p>
+                </div>
 
-                    <div class="widget">
-                        <h4><i class="fas fa-bell"></i> Newsletter</h4>
-                        <p>Recevez les dernières actualités directement dans votre boîte mail.</p>
-                        <form style="margin-top: 1rem;">
-                            <input type="email" placeholder="Votre email" style="width: 100%; padding: 0.8rem; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 1rem;">
-                            <button type="submit" style="width: 100%; padding: 0.8rem; background: linear-gradient(135deg, #3b82f6, #1d4ed8); color: white; border: none; border-radius: 8px; font-weight: 500; cursor: pointer; transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">S'abonner</button>
-                        </form>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
                     </div>
-                </aside>
+                    <h3>IA Stratégique</h3>
+                    <p>Notre intelligence artificielle vous conseille les meilleurs choix à chaque étape</p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Communauté Pro</h3>
+                    <p>Échangez avec les meilleurs joueurs et partagez vos victoires</p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Multi-Plateforme</h3>
+                    <p>Accessible partout, sur tous vos appareils pour ne jamais manquer une opportunité</p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Formation Continue</h3>
+                    <p>Guides détaillés et tutoriels pour progresser de débutant à challenger</p>
+                </div>
             </div>
         </div>
-    </main>
+    </section>
 
-    <footer class="footer">
+    <!-- Strategies Section -->
+    <section id="strategies" class="strategies">
+        <div class="container">
+            <h2 class="section-title fade-in">Stratégies Top 1 Garanties</h2>
+            <div class="strategies-grid">
+                <div class="strategy-card fade-in">
+                    <div class="strategy-rank">1</div>
+                    <h3>Reroll Hypercarry</h3>
+                    <p>Maximisez vos chances avec une stratégie de reroll agressif centré sur un carry 3 étoiles</p>
+                </div>
+
+                <div class="strategy-card fade-in">
+                    <div class="strategy-rank">2</div>
+                    <h3>Fast 8 Flex</h3>
+                    <p>Atteignez rapidement le niveau 8 et adaptez votre composition selon les unités disponibles</p>
+                </div>
+
+                <div class="strategy-card fade-in">
+                    <div class="strategy-rank">3</div>
+                    <h3>Économie Parfaite</h3>
+                    <p>Gérez votre économie comme un pro pour avoir l'avantage en fin de partie</p>
+                </div>
+
+                <div class="strategy-card fade-in">
+                    <div class="strategy-rank">4</div>
+                    <h3>Positionnement Optimal</h3>
+                    <p>Maîtrisez l'art du positionnement pour contrer tous vos adversaires</p>
+                </div>
+
+                <div class="strategy-card fade-in">
+                    <div class="strategy-rank">5</div>
+                    <p>Analysez le meta en temps réel et pivotez au bon moment</p>
+                </div>
+
+                <div class="strategy-card fade-in">
+                    <div class="strategy-rank">6</div>
+                    <h3>Gestion des Items</h3>
+                    <p>Optimisez vos objets combinés pour maximiser la puissance de votre composition</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section id="stats" class="stats">
+        <div class="container">
+            <h2 class="section-title fade-in">Nos Résultats Parlent</h2>
+            <div class="stats-grid">
+                <div class="stat-item fade-in">
+                    <span class="stat-number" data-count="96">0</span>
+                    <span class="stat-label">% de Top 4</span>
+                </div>
+                <div class="stat-item fade-in">
+                    <span class="stat-number" data-count="78">0</span>
+                    <span class="stat-label">% de Top 1</span>
+                </div>
+                <div class="stat-item fade-in">
+                    <span class="stat-number" data-count="50000">0</span>
+                    <span class="stat-label">Joueurs Actifs</span>
+                </div>
+                <div class="stat-item fade-in">
+                    <span class="stat-number" data-count="1200">0</span>
+                    <span class="stat-label">LP Moyenne Gagnés</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h4>Tanguy Actu</h4>
-                    <p>Votre source d'information fiable pour suivre les actualités du conflit russo-ukrainien et ses implications géopolitiques.</p>
+                    <h4>TFT Champions</h4>
+                    <p>La plateforme ultime pour dominer Teamfight Tactics et atteindre le sommet du classement.</p>
                 </div>
                 <div class="footer-section">
-                    <h4>Navigation</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">Accueil</a></li>
-                        <li><a href="#">Actualités Russie</a></li>
-                        <li><a href="#">Actualités Ukraine</a></li>
-                        <li><a href="#">Analyses</a></li>
-                    </ul>
+                    <h4>Liens Rapides</h4>
+                    <p><a href="#features">Fonctionnalités</a></p>
+                    <p><a href="#strategies">Stratégies</a></p>
+                    <p><a href="#stats">Statistiques</a></p>
                 </div>
                 <div class="footer-section">
-                    <h4>Contact</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">Nous contacter</a></li>
-                        <li><a href="#">Équipe éditoriale</a></li>
-                        <li><a href="#">Mentions légales</a></li>
-                        <li><a href="#">Confidentialité</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Suivez-nous</h4>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                    </div>
+                    <h4>Support</h4>
+                    <p><a href="#">Centre d'aide</a></p>
+                    <p><a href="#">Contact</a></p>
+                    <p><a href="#">FAQ</a></p>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Tanguy Actu. Tous droits réservés.</p>
+            
+            <div class="social-links">
+                <a href="#"><i class="fab fa-discord"></i></a>
+                <a href="#"><i class="fab fa-twitch"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
             </div>
+            
+            <p>&copy; 2024 TFT Champions. Tous droits réservés.</p>
         </div>
     </footer>
 
     <script>
-        // Animation pour les cartes d'articles
-        document.addEventListener('DOMContentLoaded', function() {
-            const articleCards = document.querySelectorAll('.article-card');
-            
-            // Observer pour les animations au scroll
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            });
-            
-            articleCards.forEach((card, index) => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(30px)';
-                card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
-                observer.observe(card);
-            });
-            
-            // Effet de survol pour les éléments trending
-            const trendingItems = document.querySelectorAll('.trending-item');
-            trendingItems.forEach(item => {
-                item.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateX(5px)';
-                });
-                
-                item.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateX(0)';
-                });
-            });
-            
-            // Animation du texte défilant
-            const breakingContent = document.querySelector('.breaking-content');
-            if (breakingContent && window.innerWidth > 768) {
-                breakingContent.addEventListener('mouseenter', function() {
-                    this.style.animationPlayState = 'paused';
-                });
-                
-                breakingContent.addEventListener('mouseleave', function() {
-                    this.style.animationPlayState = 'running';
-                });
-            }
-        });
-        
-        // Gestion du menu mobile
-        function toggleMobileMenu() {
-            const nav = document.querySelector('.nav');
-            nav.classList.toggle('mobile-active');
-        }
-        
-        // Smooth scroll pour les ancres
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -713,16 +687,85 @@
                 }
             });
         });
-        
-        // Effet de parallaxe léger sur le hero
-        window.addEventListener('scroll', function() {
-            const hero = document.querySelector('.hero');
-            const scrolled = window.pageYOffset;
-            const speed = scrolled * 0.5;
-            
-            if (hero) {
-                hero.style.transform = `translateY(${speed}px)`;
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Counter animation
+        function animateCounter(element) {
+            const target = parseInt(element.getAttribute('data-count'));
+            const duration = 2000;
+            const increment = target / (duration / 16);
+            let current = 0;
+
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                element.textContent = Math.floor(current).toLocaleString();
+            }, 16);
+        }
+
+        // Trigger counter animation when stats section is visible
+        const statsObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counters = entry.target.querySelectorAll('.stat-number');
+                    counters.forEach(counter => {
+                        if (!counter.classList.contains('animated')) {
+                            counter.classList.add('animated');
+                            animateCounter(counter);
+                        }
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsSection = document.querySelector('.stats');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+
+        // Header background on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(15, 32, 39, 0.98)';
+            } else {
+                header.style.background = 'rgba(15, 32, 39, 0.95)';
             }
+        });
+
+        // Mobile menu toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Add initial animation class
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                document.querySelector('.hero-content').classList.add('visible');
+            }, 300);
         });
     </script>
 </body>
